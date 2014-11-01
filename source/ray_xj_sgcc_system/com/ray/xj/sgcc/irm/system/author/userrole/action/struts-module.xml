@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.author.userrole" extends="default"	namespace="/module/irm/system/author/userrole">
+		<action name="userrole_*" class="com.ray.xj.sgcc.irm.system.author.userrole.action.UserRoleAction"	method="{1}">
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">userrole_browse.action?_searchname=system.author.userrole.browse</result>
+			<result name="delete" type="redirect">userrole_browse.action?_searchname=system.author.userrole.browse</result>
+			<result name="update" type="redirect">userrole_locate.action?_searchname=system.author.userrole.locate&amp;id=${userRole.id}</result>
+		</action>
+	</package>
+</struts>

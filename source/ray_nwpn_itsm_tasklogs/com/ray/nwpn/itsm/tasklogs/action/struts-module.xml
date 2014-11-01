@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.app.business.tasklogs.tasklogs" extends="default" namespace="/module/app/business/tasklogs/tasklogs">
+		<action name="tasklogs_*" class="com.ray.nwpn.itsm.tasklogs.action.TaskLogsAction" method="{1}">
+		 	<result name="mainframe" type="freemarker">/com/ray/nwpn/itsm/tasklogs/view/mainframe.ftl</result>
+		 	<result name="locateframe" type="freemarker">/com/ray/nwpn/itsm/tasklogs/view/locateframe.ftl</result>
+		 	<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">tasklogs_browse.action?_searchname=tasklogs.browse</result>
+			<result name="delete" type="redirect">tasklogs_browse.action?_searchname=tasklogs.browse</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="update" type="redirect">tasklogs_browse.action?_searchname=tasklogs.browse</result>		
+		</action>
+	</package>
+</struts>
+

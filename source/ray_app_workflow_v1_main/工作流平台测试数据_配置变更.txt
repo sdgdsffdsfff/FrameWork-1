@@ -1,0 +1,70 @@
+﻿-- 删除变更流程定义
+delete from t_sys_wfbactpos where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChange'));
+delete from t_sys_wfbroutepos where routeid in (select id from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChange'));
+
+delete from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChange');
+delete from t_sys_wfbactowner where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChange'));
+delete from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChange');
+delete from t_sys_wfbflow where classid = 'ConfigChange';
+
+delete from t_sys_wfbform where id='ConfigChange';
+delete from t_sys_wfbflowclass where id='ConfigChange';
+
+--变更流程
+insert into t_sys_wfbform (id, url, classid, cname) values('ConfigChange','ConfigChange','ConfigChange','ConfigChange');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('ConfigChange', 'ConfigChange', 'ConfigChange', 'ConfigChange');
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('ConfigChange','配置变更流程','ConfigChange','ConfigChange','1','激活','ConfigChange');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('g000','开始','BEGIN','ConfigChange','ConfigChange','普通','OR','OR','N',null,'单人','0',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('g001','新建','NORMAL','ConfigChange','ConfigChange','普通','OR','OR','Y',null,'单人','0',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('g002','审核','NORMAL','ConfigChange','ConfigChange','普通','OR','OR','N',null,'单人','1',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('g003','调整跟踪','NORMAL','ConfigChange','ConfigChange','普通','OR','OR','N',null,'单人','0',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('g004','确认','NORMAL','ConfigChange','ConfigChange','普通','OR','OR','N',null,'单人','1',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('g005','执行','NORMAL','ConfigChange','ConfigChange','普通','OR','OR','N',null,'单人','0',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('g006','结束','END','ConfigChange','ConfigChange','普通','OR','OR','N',null,'单人','0',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('g001-001','g001',null,'ROLE','BGWHRY','变更维护人员',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('g002-001','g002',null,'FORMULA','@FieldToPerson(ConfigChange#CURRENT#auditerid#loginname)','审核人',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('g003-001','g003',null,'FORMULA','@ActHanderByName(新建)','@ActHanderByName(新建)',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('g004-001','g004',null,'FORMULA','@ActHanderByName(审核)','@ActHanderByName(审核)',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('g005-001','g005',null,'FORMULA','@FieldToPerson(ConfigChange#CURRENT#executerid#loginname)','变更执行人',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('cg000','转新建',null,null,'g000','g001','ConfigChange',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('cg001','转审核',null,null,'g001','g002','ConfigChange',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('cg002','转调整跟踪',null,null,'g002','g003','ConfigChange',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('cg003','转确认',null,null,'g003','g004','ConfigChange',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('cg004','转执行',null,null,'g004','g005','ConfigChange',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('cg005','转结束',null,null,'g005','g006','ConfigChange',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('cg000','g000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('cg001','g001','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('cg002','g002','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('cg003','g003','500','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('cg004','g004','625','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('cg005','g005','750','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('cg006','g006','875','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('cg000','cg000','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('cg001','cg001','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('cg002','cg002','400,275,525,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('cg003','cg003','525,275,650,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('cg004','cg004','650,275,775,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('cg005','cg005','775,275,900,275');

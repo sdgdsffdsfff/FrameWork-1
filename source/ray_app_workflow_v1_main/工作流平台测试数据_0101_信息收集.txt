@@ -1,0 +1,50 @@
+﻿insert into t_sys_wfbform (id, url, classid, cname) values('HBGL_XXSJ','','HBGL_XXSJ','户表管理_信息收集');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('HBGL_XXSJ', 'HBGL_XXSJ', '户表管理_信息收集', 'HBGL_XXSJ');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('HBGL_XXSJ','户表管理_信息收集','HBGL_XXSJ','HBGL_XXSJ','1','生效','HBGL_XXSJ');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_XXSJ_000','开始','BEGIN','HBGL_XXSJ','HBGL_XXSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_XXSJ_XXDJ','信息登记','NORMAL','HBGL_XXSJ','HBGL_XXSJ','普通','OR','OR','Y',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_XXSJ_XXHZ','信息汇总','NORMAL','HBGL_XXSJ','HBGL_XXSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_XXSJ_XXSH','信息审核','NORMAL','HBGL_XXSJ','HBGL_XXSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_XXSJ_ZDDJ','主动对接','NORMAL','HBGL_XXSJ','HBGL_XXSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_XXSJ_999','结束','END','HBGL_XXSJ','HBGL_XXSJ','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_XXSJ_XXDJ_001','HBGL_XXSJ_XXDJ',null,'ROLE','SYSTEM','系统管理员',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_XXSJ_XXHZ_001','HBGL_XXSJ_XXHZ',null,'ROLE','SYSTEM','系统管理员',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_XXSJ_XXXXSH_001','HBGL_XXSJ_XXSH',null,'ROLE','SYSTEM','系统管理员',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_XXSJ_ZDDJ_001','HBGL_XXSJ_ZDDJ',null,'ROLE','SYSTEM','系统管理员',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_XXSJ_000_XXDJ','转信息登记',null,null,'HBGL_XXSJ_000','HBGL_XXSJ_XXDJ','HBGL_XXSJ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_XXSJ_XXDJ_XXHZ','转信息汇总',null,null,'HBGL_XXSJ_XXDJ','HBGL_XXSJ_XXHZ','HBGL_XXSJ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_XXSJ_XXHZ_XXSH','转信息审核',null,null,'HBGL_XXSJ_XXHZ','HBGL_XXSJ_XXSH','HBGL_XXSJ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_XXSJ_XXSH_ZDDJ','转主动对接',null,null,'HBGL_XXSJ_XXSH','HBGL_XXSJ_ZDDJ','HBGL_XXSJ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_XXSJ_ZDDJ_END','转结束',null,null,'HBGL_XXSJ_ZDDJ','HBGL_XXSJ_999','HBGL_XXSJ',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_XXSJ_000','HBGL_XXSJ_000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_XXSJ_XXDJ','HBGL_XXSJ_XXDJ','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_XXSJ_XXHZ','HBGL_XXSJ_XXHZ','375','125');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_XXSJ_XXSH','HBGL_XXSJ_XXSH','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_XXSJ_ZDDJ','HBGL_XXSJ_ZDDJ','375','375');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_XXSJ_999','HBGL_XXSJ_999','500','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_XXSJ_000_XXDJ','HBGL_XXSJ_000_XXDJ','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_XXSJ_XXDJ_XXHZ','HBGL_XXSJ_XXDJ_XXHZ','275,275,400,150');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_XXSJ_XXHZ_XXSH','HBGL_XXSJ_XXHZ_XXSH','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_XXSJ_XXSH_ZDDJ','HBGL_XXSJ_XXSH_ZDDJ','275,275,400,400');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_XXSJ_ZDDJ_END','HBGL_XXSJ_ZDDJ_END','275,275,400,400');

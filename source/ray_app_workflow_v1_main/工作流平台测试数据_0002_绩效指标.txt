@@ -1,0 +1,19 @@
+﻿delete from t_app_kpi;
+
+insert into t_app_kpi (id, flowdefid, actdefid, cname, pname, datatype, dvalue, dataunit, scopetype) 
+values('GXGL_ZZ_QC','GXGL_ZZ', 'GXGL_ZZ_QC', '执行时长', 'XXGX.ZXSC', 'INT', 1, 'DAY', 'NODE');
+
+insert into t_app_kpi (id, flowdefid, actdefid, cname, pname, datatype, dvalue, dataunit, scopetype) 
+values('GXGL_ZZ_GXSH_ZZ','GXGL_ZZ', 'GXGL_ZZ_GXSH_ZZ', '执行时长', 'XXGX.ZXSC', 'INT', 1, 'DAY', 'NODE');
+
+insert into t_app_kpi (id, flowdefid, actdefid, cname, pname, datatype, dvalue, dataunit, scopetype) 
+values('GXGL_ZZ_GXSH_BMZR','GXGL_ZZ', 'GXGL_ZZ_GXSH_BMZR', '执行时长', 'XXGX.ZXSC', 'INT', 1, 'DAY', 'NODE');
+
+insert into t_app_kpi (id, flowdefid, actdefid, cname, pname, datatype, dvalue, dataunit, scopetype) 
+values('GXGL_ZZ_GXSH_GSZGLD','GXGL_ZZ', 'GXGL_ZZ_GXSH_GSZGLD', '执行时长', 'XXGX.ZXSC', 'INT', 1, 'DAY', 'NODE');
+
+insert into t_app_kpi (id, flowdefid, actdefid, cname, pname, datatype, dvalue, dataunit, scopetype) 
+values('GXGL_ZZ_GXSH_ZJL','GXGL_ZZ', 'GXGL_ZZ_GXSH_ZJL', '执行时长', 'XXGX.ZXSC', 'INT', 1, 'DAY', 'NODE');
+
+insert into t_app_kpi (id, flowdefid, actdefid, cname, pname, datatype, dvalue, dataunit, scopetype) 
+values('GXGL_ZZ_XXGX','GXGL_ZZ', 'GXGL_ZZ_XXGX', '执行时长', 'XXGX.ZXSC', 'INT', 1, 'DAY', 'NODE');

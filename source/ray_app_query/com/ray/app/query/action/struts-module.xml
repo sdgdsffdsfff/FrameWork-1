@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.query.action" extends="default" namespace="/module/app/query">
+		<action name="query_*" class="com.ray.app.query.action.QueryAction" method="{1}">
+			<result name="page">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input">/com/ray/app/query/view/input.ftl</result>
+			<result name="pageselect">/com/ray/app/query/view/pageselect.ftl</result>
+			<result name="pageselects">/com/ray/app/query/view/pageselects.ftl</result>
+		</action>
+	</package>
+</struts>
+

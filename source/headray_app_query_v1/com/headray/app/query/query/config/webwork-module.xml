@@ -1,0 +1,16 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="com.headray.app.query.query" extends="webwork-default" namespace="/">
+        <!-- 通用查询定义 -->
+        <action name="query" class="com.headray.app.query.query.web.QueryAction">
+	        <result name="mainframe-success" type="freemarker">/com/headray/app/query/query/page/mainframe.ftl</result> 
+	        <result name="page-success" type="freemarker">/com/headray/app/query/query/page/page.ftl</result>
+	        <result name="locate-success" type="freemarker">/com/headray/app/query/query/page/locate.ftl</result>
+	        <result name="input-success" type="freemarker">/com/headray/app/query/query/page/input.ftl</result>
+	        <result name="insert-success" type="freemarker">query!page.action?searchname=search</result>
+	        
+	        <result name="pageajax-success" type="freemarker">/com/headray/app/query/query/page/pageajax.ftl</result>
+        </action>
+        
+	</package>
+</xwork>

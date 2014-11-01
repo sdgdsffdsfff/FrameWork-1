@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.portal.subject" extends="default" namespace="/module/irm/system/portal/subject">
+		<action name="subject_*" class="com.ray.xj.sgcc.irm.system.portal.subject.action.SubjectAction" method="{1}">
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="locateframe" type="freemarker">/com/ray/xj/sgcc/irm/system/portal/subject/view/locateframe.ftl</result>
+			<result name="browserole" type="freemarker">/com/ray/app/query/view/page.module.ftl</result>
+			<result name="saverole" type="redirect">subject_browserole.action?_searchname=system.portal.subject.browserole&amp;id=${id}</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<!--<result name="insert" type="redirect">subject_browse.action?_searchname=system.portal.subject.browse</result>  -->
+			<result name="insert" type="redirect">subject_locate.action?_searchname=system.portal.subject.locate&amp;id=${subject.id}</result>
+			<result name="delete" type="redirect">subject_browse.action?_searchname=system.portal.subject.browse</result>
+			<result name="update" type="redirect">subject_locate.action?_searchname=system.portal.subject.locate&amp;id=${subject.id}</result>
+		</action>
+	</package>
+</struts>

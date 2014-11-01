@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.flow.flowlog" extends="default" namespace="/module/irm/system/flow/flowlog">
+		<action name="flowlog_*" class="com.ray.xj.sgcc.irm.system.flow.flowlog.action.FlowLogAction" method="{1}">
+			<result name="changecomment" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/changecomment.ftl</result>
+			<result name="changeselectuser" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/changeselectuser.ftl</result>
+			<result name="changeselectflowuser" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/changeselectflowuser.ftl</result>
+			<result name="changeuserpage" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/changeuserpage.ftl</result>
+			<result name="changeusertree" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/changeusertree.ftl</result>
+			<result name="flowuserpage" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/flowuserpage.ftl</result>
+			<result name="flowusertree" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/flowusertree.ftl</result>
+			<result name="organpage" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/organpage.ftl</result>
+			<result name="rolepage" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/rolepage.ftl</result>
+			<result name="organtree" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/organtree.ftl</result>
+			<result name="roletree" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/roletree.ftl</result>
+			<result name="finduserbyorgan" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/changeusertree.ftl</result>
+			<result name="finduserbyrole" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/changeusertree.ftl</result>
+			<result name="forward" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/forward.ftl</result>
+			<result name="changebackcomment" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/changebackcomment.ftl</result>
+			<result name="back" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/back.ftl</result>
+			<result name="projectcomment" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/flowlog/view/projectcomment.ftl</result>
+		</action>
+	</package>
+</struts>

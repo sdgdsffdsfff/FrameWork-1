@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.flow.opinion" extends="default" namespace="/module/irm/system/flow/opinion">
+		<action name="opinion_*" class="com.ray.xj.sgcc.irm.system.flow.opinion.action.OpinionAction" method="{1}">
+			<result name="save" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/opinion/view/issaveok.ftl</result>
+			<result name="browse" type="freemarker">/com/ray/xj/sgcc/irm/system/flow/opinion/view/browse.ftl</result>
+		</action>
+	</package>
+</struts>

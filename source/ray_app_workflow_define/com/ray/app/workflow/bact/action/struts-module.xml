@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.workflow.bact.action" extends="default" namespace="/module/app/system/workflow/bact">
+		<action name="bact_*" class="com.ray.app.workflow.bact.action.BActAction" method="{1}">
+			<result name="insertnode" type="freemarker">/com/ray/app/workflow/bact/view/insertnode.ftl</result>
+			<result name="description" type="freemarker">/com/ray/app/workflow/bact/view/description.ftl</result>
+			<result name="selnodeowner" type="freemarker">/com/ray/app/workflow/bact/view/selnodeowner.ftl</result>
+			<result name="selacttask" type="freemarker">/com/ray/app/workflow/bact/view/selacttask.ftl</result>
+			<result name="form" type="freemarker">/com/ray/app/workflow/bact/view/form.ftl</result>
+			<result name="strategic" type="freemarker">/com/ray/app/workflow/bact/view/strategic.ftl</result>
+			<result name="nodeowner" type="freemarker">/com/ray/app/workflow/bact/view/nodeowner.ftl</result>
+			<result name="formal" type="freemarker">/com/ray/app/workflow/bact/view/formal.ftl</result>
+			<result name="nodetasklist" type="freemarker">/com/ray/app/workflow/bact/view/nodetasklist.ftl</result>
+			<result name="task" type="freemarker">/com/ray/app/workflow/bact/view/task.ftl</result>
+			<result name="selecttask" type="freemarker">/com/ray/app/workflow/bact/view/selecttask.ftl</result>
+			<result name="selectsubflow" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="opensubflow" type="redirect">${base}/module/app/system/workflow/define/define_main.action?flowid=${arg.flowid}</result>
+		</action>
+	</package>
+</struts>

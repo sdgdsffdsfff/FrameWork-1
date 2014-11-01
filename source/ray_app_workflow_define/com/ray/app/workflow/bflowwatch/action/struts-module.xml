@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.workflow.bflowwatch.action" extends="default" namespace="/module/app/system/workflow/bflowwatch">
+		<action name="bflowwatch_*" class="com.ray.app.workflow.bflowwatch.action.BFlowWatchAction" method="{1}">
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="flowtrace" type="redirect">${base}/module/app/system/workflow/ui/flowtrace.action?dataid=${arg.dataid}&amp;tableid=${arg.tableid}&amp;actdefid=${arg.actdefid}</result>
+		</action>
+	</package>
+</struts>

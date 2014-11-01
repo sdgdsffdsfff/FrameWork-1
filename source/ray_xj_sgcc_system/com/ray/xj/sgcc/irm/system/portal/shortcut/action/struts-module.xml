@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.portal.shortcut" extends="default" namespace="/module/irm/system/portal/shortcut">
+		<action name="shortcut_*" class="com.ray.xj.sgcc.irm.system.portal.shortcut.action.ShortCutAction" method="{1}">
+			<result name="mainframe" type="freemarker">/com/ray/xj/sgcc/irm/system/portal/shortcut/view/mainframe.ftl</result>
+			<result name="tree" type="freemarker">/com/ray/xj/sgcc/irm/system/portal/shortcut/view/treeview.ftl</result>
+			<result name="treechild" type="freemarker">/com/ray/xj/sgcc/irm/system/portal/shortcut/view/treeviewchild.ftl</result>
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="locateframe" type="freemarker">/com/ray/xj/sgcc/irm/system/portal/shortcut/view/locateframe.ftl</result>
+			<result name="browserole" type="freemarker">/com/ray/app/query/view/page.module.ftl</result>
+			<result name="saverole" type="redirect">shortcut_browserole.action?_searchname=system.portal.shortcut.browserole&amp;id=${id}</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<!--<result name="insert" type="redirect">shortcut_browse.action?_searchname=system.portal.shortcut.browse&amp;supid=${shortCut.supid}</result> -->
+			<result name="insert" type="redirect">shortcut_locate.action?_searchname=system.portal.shortcut.locate&amp;id=${shortCut.id}</result>
+			<result name="delete" type="redirect">shortcut_browse.action?_searchname=system.portal.shortcut.browse&amp;supid=${arg.supid}</result>
+			<result name="update" type="redirect">shortcut_locate.action?_searchname=system.portal.shortcut.locate&amp;id=${shortCut.id}</result>
+		</action>
+	</package>
+</struts>

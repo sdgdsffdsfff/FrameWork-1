@@ -1,0 +1,30 @@
+﻿insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXDJ','信息登记','253','建设用地规划许可证','资质','系统','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXDJ','信息登记','254','建设工程许可证','资质','系统','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXDJ','信息登记','255','建设工程施工许可证','资质','系统','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXDJ','信息登记','256','营业执照','资质','系统','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXDJ','信息登记','257','组织机构代码证','资质','系统','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXDJ','信息登记','258','委托书','资质','系统','Y');
+
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXHZ','信息汇总','259','新建小区详细规划资料','资质','系统','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXHZ','信息汇总','260','新建住宅小区供电施工用户申请表','资质','系统','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXHZ','信息汇总','261','高低压新装（临时）','资质','系统','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'HBGL','HBGL_XXSJ','HBGL_XXSJ','HBGL_XXSJ_XXHZ','信息汇总','262','高低压新装（正式）','资质','系统','Y');
+
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'GXGL','GXGL_ZZ','GXGL_ZZ','GXGL_ZZ_QC','起草','001','共享文档','','','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'GXGL','GXGL_BMZR','GXGL_BMZR','GXGL_BMZR_QC','起草','001','共享文档','','','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'GXGL','GXGL_GSZGLD','GXGL_GSZGLD','GXGL_GSZGLD_QC','起草','001','共享文档','','','Y');
+insert into t_app_filetemplate (id, cclass, flowdefid, flowsno, actdefid, actname, cno, cname, ctype, property, required)
+values(sys_guid(), 'GXGL','GXGL_ZJL','GXGL_ZJL','GXGL_ZJL_QC','起草','001','共享文档','','','Y');

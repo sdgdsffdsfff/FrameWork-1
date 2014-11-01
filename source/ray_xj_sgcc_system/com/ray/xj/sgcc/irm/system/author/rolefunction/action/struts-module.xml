@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.author.rolefunction" extends="default" namespace="/module/irm/system/author/rolefunction">
+		<action name="rolefunction_*" class="com.ray.xj.sgcc.irm.system.author.rolefunction.action.RoleFunctionAction" method="{1}">
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">rolefunction_browse.action?_searchname=system.author.rolefunction.browse</result>
+			<result name="delete" type="redirect">rolefunction_browse.action?_searchname=system.author.rolefunction.browse</result>
+			<result name="update" type="redirect">rolefunction_locate.action?_searchname=system.author.rolefunction.locate&amp;id=${roleFunction.id}</result>
+		</action>
+	</package>
+</struts>

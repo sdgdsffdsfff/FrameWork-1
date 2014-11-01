@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.app.system.dictionary.dictionaryclass" extends="default" namespace="/module/app/system/dictionary/dictionaryclass">
+		<action name="dictionaryclass_*" class="com.ray.app.dictionaryclass.action.DictionaryClassAction" method="{1}">
+			<result name="mainframe" type="freemarker">/com/ray/app/dictionaryclass/view/mainframe.ftl</result>
+			<result name="treechild" type="freemarker">/com/ray/app/dictionaryclass/view/treechild.ftl</result>
+			<result name="tree" type="freemarker">/com/ray/app/dictionaryclass/view/tree.ftl</result>
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<!--<result name="insert" type="redirect">dictionaryclass_browse.action?_searchname=system.dictionary.dictionaryclass.browse&amp;supid=${arg.supid}</result>-->
+			<result name="insert" type="redirect">dictionaryclass_locate.action?_searchname=system.dictionary.dictionaryclass.locate&amp;id=${dictionaryClass.id}</result>
+			<result name="delete" type="redirect">dictionaryclass_browse.action?_searchname=system.dictionary.dictionaryclass.browse&amp;supid=${arg.supid}</result>
+			<result name="update" type="redirect">dictionaryclass_locate.action?_searchname=system.dictionary.dictionaryclass.locate&amp;id=${dictionaryClass.id}</result>
+		</action>
+	</package>
+</struts>

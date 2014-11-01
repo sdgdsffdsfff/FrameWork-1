@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="chart.report" extends="default" namespace="/chart">
+		<action name="chart_*" class="com.ray.app.chart.report.action.ChartAction" method="{1}">
+	        <result name="main" type="freemarker">/com/ray/app/chart/report/view/main.ftl</result>
+	        <result name="data" type="freemarker">
+	        	<param name="location">/com/ray/app/chart/report/view/data_${arg._spage}${data.vo.chart.dy}.ftl</param>
+	        	<param name="contentType">application/xml</param>
+	        </result>
+	    </action>
+	    
+		<action name="chartct_*" class="com.ray.app.chart.report.action.ChartCtAction" method="{1}">
+	        <result name="main" type="freemarker">/com/ray/app/chart/report/view/mainct.ftl</result>
+	        <result name="data" type="freemarker">
+	        	<param name="location">/com/ray/app/chart/report/view/data_${arg._spage}.ftl</param>
+	        	<param name="contentType">application/xml</param>
+	        </result>
+	    </action>
+	    
+		<action name="charthis_*" class="com.ray.app.chart.report.action.ChartHisAction" method="{1}">
+	        <result name="main" type="freemarker">/com/ray/app/chart/report/view/mainhis.ftl</result>
+	        <result name="data" type="freemarker">
+	        	<param name="location">/com/ray/app/chart/report/view/data_${arg._spage}.ftl</param>
+	        	<param name="contentType">application/xml</param>
+	        </result>
+	    </action>	    
+	    	    
+	</package>
+</struts>

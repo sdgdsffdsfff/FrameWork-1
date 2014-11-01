@@ -1,0 +1,60 @@
+﻿-- 删除业务活动流程定义
+delete from t_sys_wfbactpos where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'BusinessAct'));
+delete from t_sys_wfbroutepos where routeid in (select id from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'BusinessAct'));
+
+delete from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'BusinessAct');
+delete from t_sys_wfbactowner where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'BusinessAct'));
+delete from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'BusinessAct');
+delete from t_sys_wfbflow where classid = 'BusinessAct';
+
+delete from t_sys_wfbform where id='BusinessAct';
+delete from t_sys_wfbflowclass where id='BusinessAct';
+
+--业务活动
+insert into t_sys_wfbform (id, url, classid, cname) values('BusinessAct','BusinessAct','BusinessAct','BusinessAct');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('BusinessAct', 'BusinessAct', 'BusinessAct', 'BusinessAct');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('BusinessActVinit','个人业务活动移植流程','BusinessAct','BusinessAct','1','生效','BusinessAct');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vba000','开始','BEGIN','BusinessActVinit','BusinessAct','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vba001','新建','NORMAL','BusinessActVinit','BusinessAct','普通','OR','OR','Y',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vba002','审核','NORMAL','BusinessActVinit','BusinessAct','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vba003','发布','END','BusinessActVinit','BusinessAct','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('vba000','vba001',null,'ROLE','YWHDSYRY','业务活动使用人员',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('vba001','vba002',null,'ROLE','YWHDSHR','业务活动审核人',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vba000','转新建',null,null,'vba000','vba001','BusinessActVinit',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vba001','转审核',null,null,'vba001','vba002','BusinessActVinit',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vba002','转发布',null,null,'vba002','vba003','BusinessActVinit',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py)
+values('vba000','vba000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py)
+values('vba001','vba001','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py)
+values('vba002','vba002','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py)
+values('vba003','vba003','500','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints)
+values('vba000','vba000','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints)
+values('vba001','vba001','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints)
+values('vba002','vba002','400,275,525,275');

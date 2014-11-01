@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.portal.UserShortCut" extends="default" namespace="/module/irm/system/portal/usershortcut">
+		<action name="usershortcut_*" class="com.ray.xj.sgcc.irm.system.portal.usershortcut.action.UserShortCutAction" method="{1}">
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">usershortcut_browse.action?_searchname=system.portal.usershortcut.browse</result>
+			<result name="delete" type="redirect">usershortcut_browse.action?_searchname=system.portal.usershortcut.browse</result>
+			<result name="update" type="redirect">usershortcut_locate.action?_searchname=system.portal.usershortcut.locate&amp;id=${usershortcut.id}</result>
+
+		</action>
+	</package>
+</struts>

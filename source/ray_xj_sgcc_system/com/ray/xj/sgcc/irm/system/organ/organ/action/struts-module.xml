@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.organ.organ" extends="default" namespace="/module/irm/system/organ/organ">
+		<action name="organ_*" class="com.ray.xj.sgcc.irm.system.organ.organ.action.OrganAction" method="{1}">
+			<result name="mainframe" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/mainframe.ftl</result>
+			<result name="tree" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/tree.ftl</result>
+			<result name="treechild" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/treechild.ftl</result>
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/input.ftl</result>
+			<!--<result name="insert" type="redirect">organ_browse.action?_searchname=system.organ.organ.browse&amp;parentorganid=${arg.parentorganid}</result>-->
+			<result name="insert" type="redirect">organ_locate.action?_searchname=system.organ.organ.locate&amp;id=${organ.id}</result>
+			<result name="delete" type="redirect">organ_browse.action?_searchname=system.organ.organ.browse&amp;parentorganid=${arg.parentorganid}</result>
+			<result name="update" type="redirect">organ_locate.action?_searchname=system.organ.organ.locate&amp;id=${organ.id}</result>			
+			<result name="chooseorgan" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/chooseorgan.ftl</result>
+			<result name="selectorgan" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/selectorgan.ftl</result>
+			<result name="organname" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/organname.ftl</result>
+			<result name="ajaxbrowse" type="freemarker">/com/ray/app/query/view/pageajax.ftl</result>
+	
+			<result name="selectfromorgan" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/organ/view/selectorgan.ftl</result>
+			
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.workflow.bform.action" extends="default" namespace="/module/app/system/workflow/bform">
+		<action name="bform_*" class="com.ray.app.workflow.bform.action.BFormAction" method="{1}">
+			<result name="browsebform" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/workflow/bform/view/input.ftl</result>
+			<result name="insert" type="redirect">bform_locate.action?id=${arg.id}</result>
+			<result name="isclassid" type="freemarker">/com/ray/app/workflow/bform/view/isclassid.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/workflow/bform/view/locate.ftl</result>
+			<result name="update" type="redirect">bform_locate.action?id=${arg.id}</result>
+			<result name="delete" type="redirect">bform_browsebform.action?_searchname=workflow.bform.browsebform</result>
+		</action>
+	</package>
+</struts>

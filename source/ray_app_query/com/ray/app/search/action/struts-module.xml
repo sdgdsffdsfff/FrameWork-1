@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.search.action" extends="default" namespace="/module/app/system/query/search">
+		<action name="search_*" class="com.ray.app.search.action.SearchAction" method="{1}">
+			<result name="pageselect">/com/ray/app/query/view/pageselect.ftl</result>
+			<result name="pageselects">/com/ray/app/query/view/pageselects.ftl</result>
+			<result name="mainframe">/com/ray/app/search/view/mainframe.ftl</result>
+			<result name="browse">/com/ray/app/query/view/page.ftl</result>
+			<result name="ajaxbrowse">/com/ray/app/query/view/pageajax.ftl</result>
+			
+			<result name="locateframe">/com/ray/app/search/view/locateframe.ftl</result>
+			<result name="locate">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">search_locateframe.action?searchid=${searchid}</result>
+			<result name="delete" type="redirect">search_browse.action?_searchname=search.browse</result>
+			<result name="update" type="redirect">search_locate.action?_searchname=search.locate&amp;searchid=${searchid}</result>
+		</action>
+	
+		<action name="searchoption_*" class="com.ray.app.searchoption.action.SearchOptionAction" method="{1}">
+			<result name="browse">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input">/com/ray/app/query/view/input.ftl</result>						
+			<result name="insert" type="redirect">searchoption_locate.action?_searchname=searchoption.locate&amp;searchoptionid=${searchoptionid}&amp;searchid=${searchid}</result>
+			<result name="delete" type="redirect">searchoption_browse.action?_searchname=searchoption.browse&amp;searchid=${searchid}</result>
+			<result name="update" type="redirect">searchoption_locate.action?_searchname=searchoption.locate&amp;searchoptionid=${searchoptionid}&amp;searchid=${searchid}</result>
+
+		</action>
+
+		<action name="searchitem_*" class="com.ray.app.searchitem.action.SearchItemAction" method="{1}">
+			<result name="browse">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">searchitem_locate.action?_searchname=searchitem.locate&amp;searchitemid=${searchitemid}&amp;searchid=${searchid}</result>
+			<result name="delete" type="redirect">searchitem_browse.action?_searchname=searchitem.browse&amp;searchid=${searchid}</result>
+			<result name="update" type="redirect">searchitem_locate.action?_searchname=searchitem.locate&amp;searchitemid=${searchitemid}&amp;searchid=${searchid}</result>
+									
+		</action>
+	
+		<action name="searchurl_*" class="com.ray.app.searchurl.action.SearchUrlAction" method="{1}">
+			<result name="browse">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">searchurl_locate.action?_searchname=searchurl.locate&amp;searchurlid=${searchurlid}&amp;searchid=${searchid}</result>
+			<result name="delete" type="redirect">searchurl_browse.action?_searchname=searchurl.browse&amp;searchid=${searchid}</result>
+			<result name="update" type="redirect">searchurl_locate.action?_searchname=searchurl.locate&amp;searchurlid=${searchurlid}&amp;searchid=${searchid}</result>
+									
+		</action>
+
+		<action name="searchlink_*" class="com.ray.app.searchlink.action.SearchLinkAction" method="{1}">
+			<result name="browse">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">searchlink_locate.action?_searchname=searchlink.locate&amp;searchlinkid=${searchlinkid}&amp;searchid=${searchid}</result>
+			<result name="delete" type="redirect">searchlink_browse.action?_searchname=searchlink.browse&amp;searchid=${searchid}</result>
+			<result name="update" type="redirect">searchlink_locate.action?_searchname=searchlink.locate&amp;searchlinkid=${searchlinkid}&amp;searchid=${searchid}</result>
+									
+		</action>
+	</package>
+		
+</struts>
+

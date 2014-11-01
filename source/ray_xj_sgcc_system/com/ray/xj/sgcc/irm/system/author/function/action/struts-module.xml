@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.author.function" extends="default" namespace="/module/irm/system/author/function">
+		<action name="function_*" class="com.ray.xj.sgcc.irm.system.author.function.action.FunctionAction" method="{1}">
+			<result name="mainframe" type="freemarker">/com/ray/xj/sgcc/irm/system/author/function/view/mainframe.ftl</result>
+			<result name="tree" type="freemarker">/com/ray/xj/sgcc/irm/system/author/function/view/tree.ftl</result>
+			<result name="treechild" type="freemarker">/com/ray/xj/sgcc/irm/system/author/function/view/treechild.ftl</result>
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<!--<result name="insert" type="redirect">function_browse.action?_searchname=system.author.function.browse&amp;fnum=${arg.fnum}</result>-->
+			<result name="insert" type="redirect">function_locate.action?_searchname=system.author.function.locate&amp;id=${function.id}</result>
+			<result name="delete" type="redirect">function_browse.action?_searchname=system.author.function.browse&amp;fnum=${arg.fnum}</result>
+			<result name="update" type="redirect">function_locate.action?_searchname=system.author.function.locate&amp;id=${function.id}</result>
+			
+			<result name="locateframe" type="freemarker">/com/ray/xj/sgcc/irm/system/author/function/view/locateframe.ftl</result>
+			<result name="browserole" type="freemarker">/com/ray/app/query/view/page.module.ftl</result>
+			<result name="saverole" type="redirect">function_browserole.action?_searchname=system.author.function.browserole&amp;id=${id}&amp;fnum=${arg.fnum}</result>
+			<result name="findsubfunction" type="redirect">function_browse.action?_searchname=system.author.function.browse&amp;fnum=${arg.fnum}</result>
+		</action>
+	</package>
+</struts>

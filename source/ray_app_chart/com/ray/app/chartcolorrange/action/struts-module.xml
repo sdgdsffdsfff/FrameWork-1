@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.chart.chartcolorrange" extends="default" namespace="/module/app/system/chart/chartcolorrange">
+		<action name="chartcolorrange_*" class="com.ray.app.chartcolorrange.action.ChartColorRangeAction" method="{1}">
+			<result name="insert" type="redirect">chartcolorrange_browse.action?_searchname=chartcolorrange.browse</result>
+			<result name="delete" type="redirect">chartcolorrange_browse.action?_searchname=chartcolorrange.browse</result>
+			<result name="update" type="redirect" >chartcolorrange_browse.action?_searchname=chartcolorrange.browse</result>
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+		</action>
+	</package>
+
+</struts>

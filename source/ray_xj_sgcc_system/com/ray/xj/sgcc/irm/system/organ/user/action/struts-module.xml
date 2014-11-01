@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.organ.user" extends="default" namespace="/module/irm/system/organ/user">
+		<action name="user_*" class="com.ray.xj.sgcc.irm.system.organ.user.action.UserAction" method="{1}">
+			<result name="mainframe" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/mainframe.ftl</result>
+			<result name="tree" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/tree.ftl</result>
+			<result name="treechild" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/treechild.ftl</result>
+		
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<!--<result name="insert" type="redirect">user_browse.action?_searchname=system.organ.user.browse&amp;organid=${arg.organid}</result>-->
+			<result name="insert" type="redirect">user_locateframe.action?_searchname=system.organ.user.locate&amp;id=${user.id}</result>
+			<result name="delete" type="redirect">user_browse.action?_searchname=system.organ.user.browse&amp;organid=${arg.organid}</result>
+			<result name="update" type="redirect">user_locate.action?_searchname=system.organ.user.locate&amp;id=${user.id}</result>
+			<result name="reset" type="redirect">user_locate.action?_searchname=system.organ.user.locate&amp;id=${arg.id}</result>
+			<result name="changepassword" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/changepassword.ftl</result>
+			<result name="savepassword" type="redirect">user_changepassword.action</result>
+		
+			<result name="locateframe" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/locateframe.ftl</result>
+			<result name="browserole" type="freemarker">/com/ray/app/query/view/page.module.ftl</result>
+			<result name="saverole" type="redirect">user_browserole.action?_searchname=system.organ.user.browserole&amp;id=${user.id}&amp;organid=${arg.organid}</result>
+						
+			<result name="choosepeople" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/choosepeople.ftl</result>
+			<result name="personname" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/personname.ftl</result>
+			<result name="rolename" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/rolename.ftl</result>
+			<result name="organname" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/organname.ftl</result>
+			<result name="selectuser" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/selectuser.ftl</result>
+			<result name="selectorgan" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/selectorgan.ftl</result>
+			<result name="finduserbyorgan" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/selectuser.ftl</result>
+			<result name="selectrole" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/selectrole.ftl</result>
+			<result name="finduserbyrole" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/user/view/selectuser.ftl</result>
+			
+			<result name="useable" type="redirect">user_browse.action?_searchname=system.organ.user.browse&amp;organid=${arg.organid}</result>
+			<result name="unused" type="redirect">user_browse.action?_searchname=system.organ.user.browse&amp;organid=${arg.organid}</result>
+			<result name="ajaxbrowse" type="freemarker">/com/ray/app/query/view/pageajax.ftl</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.app.system.rtx.rtx" extends="default" namespace="/module/app/system/rtx/rtx">
+		<action name="rtx_*" class="com.ray.nwpn.itsm.rtx.action.RtxAction" method="{1}">
+		 	<result name="searchcustomer" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/customer.ftl</result>
+		 	<result name="inputevent" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/inputevent.ftl</result>
+		 	<result name="createEvent" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/end.ftl</result>
+		 	<result name="locateEvent" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/locateevent.ftl</result>
+		 	<result name="end" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/end.ftl</result>
+			<result name="selectuser" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/selectuser.ftl</result>
+			<result name="selectroute" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/selectroute.ftl</result>
+			<result name="forward" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/end.ftl</result>
+			<result name="createdata" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/createdata.ftl</result>
+			<result name="alluser" type="freemarker">/com/ray/app/jbpm/view/alluser.ftl</result>
+			<result name="userframe" type="freemarker">/com/ray/nwpn/itsm/pscreen/view/selectuserframe.ftl</result>
+		</action>
+	</package>
+</struts>
+

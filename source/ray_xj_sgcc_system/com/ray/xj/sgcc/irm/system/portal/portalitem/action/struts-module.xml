@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.portal.portalitem" extends="default" namespace="/module/irm/system/portal/portalitem">
+		<action name="portalitem_*" class="com.ray.xj.sgcc.irm.system.portal.portalitem.action.PortalItemAction" method="{1}">
+			<result name="mainframe" type="freemarker">/com/ray/xj/sgcc/irm/system/portal/portalitem/view/mainframe.ftl</result>
+			<result name="tree" type="freemarker">/com/ray/xj/sgcc/irm/system/portal/portalitem/view/treeview.ftl</result>
+			<result name="treechild" type="freemarker">/com/ray/xj/sgcc/irm/system/portal/portalitem/view/treeviewchild.ftl</result>
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<!--<result name="insert" type="redirect">portalitem_browse.action?_searchname=system.portal.portalitem.browse&amp;supid=${portalItem.supid}</result>-->
+			<result name="insert" type="redirect">portalitem_locate.action?_searchname=system.portal.portalitem.locate&amp;id=${portalItem.id}</result>
+			<result name="delete" type="redirect">portalitem_browse.action?_searchname=system.portal.portalitem.browse&amp;supid=${arg.supid}</result>
+			<result name="update" type="redirect">portalitem_locate.action?_searchname=system.portal.portalitem.locate&amp;id=${portalItem.id}</result>
+		</action>
+	</package>
+</struts>

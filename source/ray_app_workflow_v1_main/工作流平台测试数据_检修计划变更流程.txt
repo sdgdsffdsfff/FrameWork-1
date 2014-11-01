@@ -1,0 +1,42 @@
+﻿-- 删除检修计划变更流程定义
+delete from t_sys_wfbactpos where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChangeMaintance'));
+delete from t_sys_wfbroutepos where routeid in (select id from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChangeMaintance'));
+
+delete from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChangeMaintance');
+delete from t_sys_wfbactowner where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChangeMaintance'));
+delete from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ConfigChangeMaintance');
+delete from t_sys_wfbflow where classid = 'ConfigChangeMaintance';
+
+delete from t_sys_wfbform where id='ConfigChangeMaintance';
+delete from t_sys_wfbflowclass where id='ConfigChangeMaintance';
+
+--检修计划变更流程
+insert into t_sys_wfbform (id, url, classid, cname) values('ConfigChangeMaintance','ConfigChangeMaintance','ConfigChangeMaintance','ConfigChangeMaintance');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('ConfigChangeMaintance', 'ConfigChangeMaintance', 'ConfigChangeMaintance', 'ConfigChangeMaintance');
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('ConfigChangeMaintance',' 检修计划变更流程','ConfigChangeMaintance','ConfigChangeMaintance','1','激活','ConfigChangeMaintance');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('gm000','开始','BEGIN','ConfigChangeMaintance','ConfigChangeMaintance','普通','OR','OR','N',null,'单人','0',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('gm001','申请','NORMAL','ConfigChangeMaintance','ConfigChangeMaintance','普通','OR','OR','Y',null,'单人','0',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('gm999','结束','END','ConfigChangeMaintance','ConfigChangeMaintance','普通','OR','OR','N',null,'单人','0',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('gm000','gm000',null,'ROLE','XTYH','系统用户',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('gm001','gm001',null,'FORMULA','@FieldToPerson(Maintenance#CURRENT#cuser#loginname)','检修计划申请人',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('gm999','gm999',null,'ROLE','XTYH','系统用户',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('gm000-gm001','转申请',null,null,'gm000','gm001','ConfigChangeMaintance',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('gm001-gm999','转结束',null,null,'gm001','gm999','ConfigChangeMaintance',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('gm000','gm000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('gm001','gm001','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('gm999','gm999','375','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('gm000-gm001','gm000-gm001','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('gm001-gm999','gm001-gm999','275,275,400,275');

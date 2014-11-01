@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.workflow.ui.action" extends="default" namespace="/module/app/system/workflow/ui">
+	    
+		<action name="forwardselectsingleframe" class="com.ray.app.workflow.ui.action.ForwardSelectSingleFrameAction" >
+			<result name="forwardselectsingleframe" type="freemarker">/com/ray/app/workflow/ui/view/forwardselectsingleframe.ftl</result>
+		</action>	
+								
+	    <action name="selectownertoperson" class="com.ray.app.workflow.ui.action.SelectOwnerToPersonAction">
+			<result name="selectownertoperson" type="freemarker">/com/ray/app/workflow/ui/view/selectownertoperson.ftl</result>
+		</action>
+																							 
+	    <action name="selectownertopersonajax" class="com.ray.app.workflow.ui.action.SelectOwnerToPersonAjaxAction">
+			<result name="selectownertopersonajax" type="freemarker">/com/ray/app/workflow/ui/view/selectownertopersonajax.ftl</result>
+		</action>
+		
+		<action name="forward" class="com.ray.app.workflow.ui.action.ForwardAction">
+			<result name="forwardinfosuccess" type="freemarker">/com/ray/app/workflow/ui/view/message_forwardinfosuccess.ftl</result>
+			<result name="forwardautoinfosuccess" type="freemarker">/com/ray/app/workflow/ui/view/message_forwardautoinfosuccess.ftl</result>
+		</action>
+		
+		<action name="callback" class="com.ray.app.workflow.ui.action.CallBackAction">
+			<result name="callbacksuccess" type="freemarker">/com/ray/app/workflow/ui/view/message_callbacksuccess.ftl</result>
+		</action>		
+		
+		<action name="backward" class="com.ray.app.workflow.ui.action.BackwardAction">
+			<result name="backward" type="freemarker">/com/ray/app/workflow/ui/view/message_backwardsuccess.ftl</result>
+		</action>
+
+		<action name="backwardothers" class="com.ray.app.workflow.ui.action.BackwardOthersAction">
+			<result name="backwardsuccess" type="freemarker">/com/ray/app/workflow/ui/view/message_backwardsuccess.ftl</result>
+		</action>		
+		
+		<action name="flowtrace" class="com.ray.app.workflow.ui.action.FlowTraceAction">
+			<result name="flowtracesdetail" type="freemarker">/com/ray/app/workflow/ui/view/flowtracesdetail.ftl</result>
+		</action>
+		
+		<action name="flowtraceopinion" class="com.ray.app.workflow.ui.action.FlowTraceOpinionAction">
+			<result name="flowtracesopinion" type="freemarker">/com/ray/app/workflow/ui/view/flowtracesopinion.ftl</result>
+		</action>			    
+		
+		<action name="flowstat" class="com.ray.app.workflow.ui.action.FlowStatAction">
+			<result name="flowstat" type="freemarker">/com/ray/app/workflow/ui/view/flowstat.ftl</result>
+		</action>
+		
+	</package>
+</struts>

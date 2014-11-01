@@ -1,0 +1,75 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="com.headray.app.query.search" extends="default" namespace="/module/app/system/query/search">
+		<action name="invoke" class="com.headray.app.query.search.web.SearchAction">
+			<result name="mainframe-success" type="freemarker">/com/headray/app/query/search/page/mainframe.ftl</result>
+			<result name="page-success" type="freemarker">/com/headray/app/query/query/page/page.ftl</result>
+			<result name="locateframe-success" type="freemarker">/com/headray/app/query/search/page/locateframe.ftl</result>
+			<result name="locate-success" type="freemarker">/com/headray/app/query/query/page/locate.ftl</result>
+			<result name="input-success" type="freemarker">/com/headray/app/query/query/page/input.ftl</result>
+			<result name="insert-success" type="redirect">invoke!locate.action?_searchname=search.locate&amp;searchid=${arg.searchid}</result>
+		    <result name="delete-success" type="redirect">invoke!page.action?_searchname=search.browse&amp;searchid=${arg.searchid}</result>
+		    <result name="update-success" type="redirect" >invoke!locate.action?_searchname=search.locate&amp;searchid=${arg.searchid}</result>
+		    <result name="copy-success" type="redirect" >invoke!locate.action?_searchname=search.locate&amp;searchid=${arg.searchid}</result>
+			<result name="arrange-success" type="redirect" >invoke!page.action?_searchname=search.browse&amp;searchid=${arg.searchid}</result>
+		</action>
+	</package>
+	
+	<package name="com.headray.app.query.searchoption" extends="default" namespace="/module/app/system/query/searchoption">
+		<action name="invoke" class="com.headray.app.query.searchoption.web.SearchOptionAction">
+			<result name="mainframe-success" type="freemarker">/com/headray/app/query/searchoption/page/mainframe.ftl</result>
+			<result name="page-success" type="freemarker">/com/headray/app/query/query/page/page.ftl</result>
+			<result name="locate-success" type="freemarker">/com/headray/app/query/query/page/locate.ftl</result>
+			<result name="input-success" type="freemarker">/com/headray/app/query/query/page/input.ftl</result>
+			<result name="insert-success" type="redirect">invoke!page.action?_searchname=searchoption.browse&amp;searchid=${arg.searchid}</result>
+			<result name="delete-success" type="redirect">invoke!page.action?_searchname=searchoption.browse&amp;searchid=${arg.searchid}</result>
+		    <result name="update-success" type="redirect" >invoke!page.action?_searchname=searchoption.browse&amp;searchid=${arg.searchid}</result>
+		    <result name="arrange-success" type="redirect" >invoke!page.action?_searchname=searchoption.browse&amp;searchid=${arg.searchid}</result>
+			<result name="presort-success" type="freemarker" >/com/headray/app/query/searchoption/page/sort.ftl</result>
+		</action>
+	</package>
+	
+	<package name="com.headray.app.query.searchitem" extends="default" namespace="/module/app/system/query/searchitem">
+		<action name="invoke" class="com.headray.app.query.searchitem.web.SearchItemAction">
+			<result name="mainframe-success" type="freemarker">/com/headray/app/query/searchitem/page/mainframe.ftl</result>
+			<result name="page-success" type="freemarker">/com/headray/app/query/query/page/page.ftl</result>
+			<result name="locate-success" type="freemarker">/com/headray/app/query/query/page/locate.ftl</result>
+			<result name="input-success" type="freemarker">/com/headray/app/query/query/page/input.ftl</result>
+			<result name="insert-success" type="redirect">invoke!page.action?_searchname=searchitem.browse&amp;searchid=${arg.searchid}</result>
+			<result name="delete-success" type="redirect">invoke!page.action?_searchname=searchitem.browse&amp;searchid=${arg.searchid}</result>
+		    <result name="update-success" type="redirect" >invoke!page.action?_searchname=searchitem.browse&amp;searchid=${arg.searchid}</result>
+			<result name="arrange-success" type="redirect" >invoke!page.action?_searchname=searchitem.browse&amp;searchid=${arg.searchid}</result>
+			<result name="presort-success" type="freemarker" >/com/headray/app/query/searchitem/page/sort.ftl</result>
+		</action>
+	</package>
+	
+	<package name="com.headray.app.query.searchurl" extends="default" namespace="/module/app/system/query/searchurl">
+		<action name="invoke" class="com.headray.app.query.searchurl.web.SearchUrlAction">
+			<result name="mainframe-success" type="freemarker">/com/headray/app/query/searchurl/page/mainframe.ftl</result>
+			<result name="page-success" type="freemarker">/com/headray/app/query/query/page/page.ftl</result>
+			<result name="locate-success" type="freemarker">/com/headray/app/query/query/page/locate.ftl</result>
+			<result name="input-success" type="freemarker">/com/headray/app/query/query/page/input.ftl</result>
+			<result name="insert-success" type="redirect">invoke!page.action?_searchname=searchurl.browse&amp;searchid=${arg.searchid}</result>
+			<result name="delete-success" type="redirect">invoke!page.action?_searchname=searchurl.browse&amp;searchid=${arg.searchid}</result>
+		    <result name="update-success" type="redirect" >invoke!page.action?_searchname=searchurl.browse&amp;searchid=${arg.searchid}</result>
+			<result name="arrange-success" type="redirect" >invoke!page.action?_searchname=searchurl.browse&amp;searchid=${arg.searchid}</result>
+			<result name="presort-success" type="freemarker" >/com/headray/app/query/searchurl/page/sort.ftl</result>
+		</action>
+	</package>
+
+	<package name="com.headray.app.query.searchlink" extends="default" namespace="/module/app/system/query/searchlink">
+		<action name="invoke" class="com.headray.app.query.searchlink.web.SearchLinkAction">
+			<result name="mainframe-success" type="freemarker">/com/headray/app/query/searchlink/page/mainframe.ftl</result>
+			<result name="page-success" type="freemarker">/com/headray/app/query/query/page/page.ftl</result>
+			<result name="locate-success" type="freemarker">/com/headray/app/query/query/page/locate.ftl</result>
+			<result name="input-success" type="freemarker">/com/headray/app/query/query/page/input.ftl</result>
+			<result name="insert-success" type="redirect">invoke!page.action?_searchname=searchlink.browse&amp;searchid=${arg.searchid}</result>
+			<result name="delete-success" type="redirect">invoke!page.action?_searchname=searchlink.browse&amp;searchid=${arg.searchid}</result>
+		    <result name="update-success" type="redirect" >invoke!page.action?_searchname=searchlink.browse&amp;searchid=${arg.searchid}</result>
+			<result name="arrange-success" type="redirect" >invoke!page.action?_searchname=searchlink.browse&amp;searchid=${arg.searchid}</result>
+			<result name="presort-success" type="freemarker" >/com/headray/app/query/searchlink/page/sort.ftl</result>
+		</action>
+	</package>
+	
+</xwork>
+

@@ -1,0 +1,198 @@
+﻿--模拟基础数据
+insert into t_sys_role (id, cname, name, isintrinsicrole) values('GSLD', '公司领导', 'GSLD', 'Y');
+insert into t_sys_role (id, cname, name, isintrinsicrole) values('BMZR', '部门主任', 'BMZR', 'Y');
+insert into t_sys_role (id, cname, name, isintrinsicrole) values('XMZZ', '项目专责', 'XMZZ', 'Y');
+
+delete from t_sys_userrole where 1 = 1 and roleid = 'GSLD';
+delete from t_sys_userrole where 1 = 1 and roleid = 'BMZR';
+delete from t_sys_userrole where 1 = 1 and roleid = 'XMZZ';
+
+insert into t_sys_userrole (id, roleid, rname, userid, uname) values(sys_guid(), 'GSLD', 'GSLD', 'njt5312', '尼加提');
+
+insert into t_sys_userrole (id, roleid, rname, userid, uname) values(sys_guid(), 'BMZR', 'BMZR', 'cjx5217', '陈建新');
+insert into t_sys_userrole (id, roleid, rname, userid, uname) values(sys_guid(), 'BMZR', 'BMZR', 'njt5312', '尼加提');
+insert into t_sys_userrole (id, roleid, rname, userid, uname) values(sys_guid(), 'BMZR', 'BMZR', 'gx2183', '顾欣');
+insert into t_sys_userrole (id, roleid, rname, userid, uname) values(sys_guid(), 'BMZR', 'BMZR', 'awy1244', '安文燕');
+insert into t_sys_userrole (id, roleid, rname, userid, uname) values(sys_guid(), 'BMZR', 'BMZR', 'sj0022', '沈佳');
+
+insert into t_sys_userrole (id, roleid, rname, userid, uname) values(sys_guid(), 'XMZZ', 'XMZZ', 'hw4429', '何伟');
+insert into t_sys_userrole (id, roleid, rname, userid, uname) values(sys_guid(), 'XMZZ', 'XMZZ', 'wb6550', '王冰');
+
+--删除业务数据
+delete from t_app_project;
+delete from t_app_projectcomment;
+delete from t_app_projectcommentreceiver;
+delete from t_app_projectstatus;
+delete from t_app_projectmilestone;
+delete from t_app_projectmilestonedoc;
+delete from t_app_projectmilestonetask;
+delete from t_app_projectmilestonetail;
+delete from t_app_projecttask;
+delete from t_app_projectdoc;
+
+-- 删除项目流程定义
+delete from t_sys_wfbactpos where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'Project'));
+delete from t_sys_wfbroutepos where routeid in (select id from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'Project'));
+
+delete from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'Project');
+delete from t_sys_wfbactowner where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'Project'));
+delete from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'Project');
+delete from t_sys_wfbflow where classid = 'Project';
+
+delete from t_sys_wfbform where id='Project';
+delete from t_sys_wfbflowclass where id='Project';
+
+-- 删除项目里程碑流程定义
+delete from t_sys_wfbactpos where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ProjectMilestone'));
+delete from t_sys_wfbroutepos where routeid in (select id from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'ProjectMilestone'));
+
+delete from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'ProjectMilestone');
+delete from t_sys_wfbactowner where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ProjectMilestone'));
+delete from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'ProjectMilestone');
+delete from t_sys_wfbflow where classid = 'ProjectMilestone';
+
+delete from t_sys_wfbform where id='ProjectMilestone';
+delete from t_sys_wfbflowclass where id='ProjectMilestone';
+
+-- 项目流程
+insert into t_sys_wfbform (id, url, classid, cname) values('Project','Project','Project','Project');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('Project', 'Project', 'Project', 'Project');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('Project','项目管理流程','Project','Project','1','激活','Project');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('p000','开始','BEGIN','Project','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('p001','下达','NORMAL','Project','1','普通','OR','OR','Y',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess, subflowid, subflowname, subflowsno, subflowcreate, subflowclose, subflowlink) 
+values('p002','跟踪','SUBFLOW','Project','1','普通','OR','OR','N',null,'单人','N',null,'ProjectMilestone','项目里程碑跟踪流程','ProjectMilestone','MANUAL','ALL','MAIN');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('p003','部门领导审核','NORMAL','Project','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('p004','项目专责审核','NORMAL','Project','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('p005','部门领导审核','NORMAL','Project','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('p999','结束','END','Project','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('p001-001','p001',null,'ROLE','XTYH','系统用户',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('p002-001','p002',null,'FORMULA','@FieldToPerson(Project#CURRENT#pmuserid#loginname)','@FieldToPerson(Project#CURRENT#pmuserid#loginname)',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('p003-001','p003',null,'FORMULA','@DefDeptRoleByName(部门主任)','@DefDeptRoleByName(部门主任)',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('p004-001','p004',null,'FORMULA','@FieldToPerson(Project#CURRENT#pmloaderid#loginname)','@FieldToPerson(Project#CURRENT#pmloaderid#loginname)',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('p005-001','p005',null,'FORMULA','@DefDeptRoleByName(部门主任)','@DefDeptRoleByName(部门主任)',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('p000-p001','转下达',null,null,'p000','p001','Project',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('p001-p002','转跟踪',null,null,'p001','p002','Project',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('p002-p003','转部门领导审核',null,null,'p002','p003','Project',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('p003-p004','转项目专责审核',null,null,'p003','p004','Project',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('p004-p005','转专责领导审核',null,null,'p004','p005','Project',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('p005-p999','转结束',null,null,'p005','p999','Project',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('p0000','p000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('p0001','p001','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('p0002','p002','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('p0003','p003','500','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('p0004','p004','625','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('p0005','p005','750','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('p0006','p999','875','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('p0000','p000-p001','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('p0001','p001-p002','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('p0002','p002-p003','400,275,525,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('p0003','p003-p004','525,275,650,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('p0004','p004-p005','650,275,775,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('p0005','p005-p999','775,275,900,275');
+
+-- 项目跟踪流程
+insert into t_sys_wfbform (id, url, classid, cname) values('ProjectMilestone','ProjectMilestone','ProjectMilestone','ProjectMilestone');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('ProjectMilestone', 'ProjectMilestone', 'ProjectMilestone', 'ProjectMilestone');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('ProjectMilestone','项目里程碑跟踪流程','ProjectMilestone','ProjectMilestone','1','激活','ProjectMilestone');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('pt000','开始','BEGIN','ProjectMilestone','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('pt001','跟踪','NORMAL','ProjectMilestone','1','普通','OR','OR','Y',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('pt002','部门领导审核','NORMAL','ProjectMilestone','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('pt003','项目专责审核','NORMAL','ProjectMilestone','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('pt004','领导审核','NORMAL','ProjectMilestone','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('pt999','结束','END','ProjectMilestone','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('pt001-001','pt001',null,'ROLE','XTYH','系统用户',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('pt002-001','pt002',null,'FORMULA','@DefDeptRoleByName(部门主任)','@DefDeptRoleByName(部门主任)',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('pt003-001','pt003',null,'FORMULA','@FieldToPerson(Project#MAIN#pmloaderid#loginname)','@FieldToPerson(Project#MAIN#pmloaderid#loginname)',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('pt004-001','pt004',null,'FORMULA','@DefDeptRoleByName(部门主任)','@DefDeptRoleByName(部门主任)',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('pt000-pt001','转跟踪',null,null,'pt000','pt001','ProjectMilestone',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('pt001-pt002','转部门领导审核',null,null,'pt001','pt002','ProjectMilestone',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('pt002-pt003','转项目专责审核',null,null,'pt002','pt003','ProjectMilestone',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('pt003-pt004','转领导审核',null,null,'pt003','pt004','ProjectMilestone',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('pt003-pt999','转结束',null,null,'pt003','pt999','ProjectMilestone',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('pt004-pt999','转结束',null,null,'pt004','pt999','ProjectMilestone',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('pt0000','pt000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('pt0001','pt001','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('pt0002','pt002','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('pt0003','pt003','500','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('pt0004','pt004','625','150');
+insert into t_sys_wfbactpos(id,actid,px,py) values('pt0005','pt999','750','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('pt0000','pt000-pt001','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('pt0001','pt001-pt002','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('pt0002','pt002-pt003','400,275,525,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('pt0003','pt003-pt004','525,275,650,175');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('pt0004','pt003-pt999','525,275,775,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('pt0005','pt004-pt999','650,175,775,275');

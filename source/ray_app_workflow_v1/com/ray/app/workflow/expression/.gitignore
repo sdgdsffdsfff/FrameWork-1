@@ -1,0 +1,14 @@
+/ArithOpNode.class
+/CompOpNode.class
+/ConditionLexer.class
+/ConditionParser.class
+/ConstNode.class
+/FieldNode.class
+/JobNode.class
+/LogicOpNode.class
+/OperatorAST.class
+/PTokenTypes.class
+/SwapSpec.class
+/VariableNode.class
+/VariableTable.class
+/WfCondAST.class

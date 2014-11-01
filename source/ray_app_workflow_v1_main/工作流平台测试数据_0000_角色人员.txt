@@ -1,0 +1,74 @@
+﻿-- 组织机构
+
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('00000000','山西省电力公司','山西省电力公司','山西省电力公司',null,'ORG' ,'G000','R0');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('000000000001','营销处','营销处','营销部/山西省电力公司','营销处','DEPT','G000D001','00000000');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('000000000002','财务处','财务处','财务处/山西省电力公司','财务处','DEPT','G000D002','00000000');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('000000000003','发策处','发策处','发策处/山西省电力公司','发策处','DEPT','G000D003','00000000');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('000000000004','办公室','办公室','办公室/山西省电力公司','办公室','DEPT','G000D004','00000000');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('000000000005','监察处','监察处','监察处/山西省电力公司','监察处','DEPT','G000D005','00000000');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('000000000006','户表办','户表办','户表办/山西省电力公司','户表办','DEPT','G000D006','00000000');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('000000000007','信通公司','信通公司','信通公司/山西省电力公司',null,'ORG','G000G000','00000000');
+
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('0000000000010001','营销一组','营销一组','营销一组/营销部/山西省电力公司','营销一组','DEPT','G000D001D001','000000000001');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('0000000000010002','营销二组','营销二组','营销二组/营销部/山西省电力公司','营销二组','DEPT','G000D001D002','000000000001');
+
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('0000000000020001','财务一组','财务一组','财务一组/财务处/山西省电力公司','财务一组','DEPT','G000D002D001','000000000002');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('0000000000020002','财务二组','财务二组','财务二组/财务处/山西省电力公司','财务二组','DEPT','G000D002D002','000000000002');
+
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('0000000000070001','调度处','调度处','调度处/信通公司/山西省电力公司','调度处','DEPT','G000G000D001','000000000007');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('0000000000070002','运行处','运行处','运行处/信通公司/山西省电力公司','运行处','DEPT','G000G000D002','000000000007');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('0000000000070003','检修处','检修处','检修处/信通公司/山西省电力公司','检修处','DEPT','G000G000D003','000000000007');
+
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('00000000000700010001','调度一组','调度一组','调度一组/调度处/信通公司/山西省电力公司','调度一组','DEPT','G000G000D001D001','0000000000070001');
+insert into T_SYS_ORGAN(id,cname,shortname,allname,deptname,ctype,ordernum,parentorganid) values('00000000000700010002','调度二组','调度二组','调度二组/调度处/信通公司/山西省电力公司','调度二组','DEPT','G000G000D001D002','0000000000070001');
+
+update t_sys_organ set internal = id;
+
+
+-- 人员
+insert into T_SYS_USER(id,loginname,cname,ownerorg,ownerdept,orgname,deptname) values('zhangy','zhangy','张瑜','000000000007','00000000000700010001','信通公司', '调度一组' );
+insert into T_SYS_USER(id,loginname,cname,ownerorg,ownerdept,orgname,deptname) values('gaob','gaob','高博','000000000007','00000000000700010002','信通公司', '调度一组' );
+insert into T_SYS_USER(id,loginname,cname,ownerorg,ownerdept,orgname,deptname) values('limm','limm','李梅梅','000000000007','0000000000070001','信通公司', '调度处' );
+insert into T_SYS_USER(id,loginname,cname,ownerorg,ownerdept,orgname,deptname) values('lixin','lixin','李新','000000000007','0000000000070001','信通公司', '检修处' );
+insert into T_SYS_USER(id,loginname,cname,ownerorg,ownerdept,orgname,deptname) values('yaoyq','yaoyq','姚亚强','000000000007','0000000000070002','信通公司', '运行处' );
+insert into T_SYS_USER(id,loginname,cname,ownerorg,ownerdept,orgname,deptname) values('ouxy','ouxy','欧晓勇','000000000007','0000000000070003','信通公司', '检修处' );
+insert into T_SYS_USER(id,loginname,cname,ownerorg,ownerdept,orgname,deptname) values('xum','xum','徐敏','000000000007','0000000000070003','信通公司', '检修处' );
+
+insert into T_SYS_USER(id,loginname,cname,ownerorg,ownerdept,orgname,deptname) values('luyg','luyg','卢永刚','00000000','000000000004','山西省电力公司', '办公室' );
+
+update t_sys_user set password = 'b59c67bf196a4758191e42f76670ceba';
+
+-- 信息共享
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '应用管理员','SYSTEM','褚磊','chul');
+
+insert into t_sys_role (id, name, cname) values('XXGXZZ','XXGXZZ','信息共享专责');
+insert into t_sys_role (id, name, cname) values('BMZR','BMZR','部门主任');
+insert into t_sys_role (id, name, cname) values('GSZGLD','GSZGLD','公司分管领导');
+insert into t_sys_role (id, name, cname) values('ZJL','ZJL','公司党政领导');
+
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '信息共享专责','XXGXZZ','张瑜','zhangy');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '信息共享专责','XXGXZZ','高博','gaob');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '部门主任','BMZR','李梅梅','limm');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '部门主任','BMZR','姚亚强','yaoyq');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '部门主任','BMZR','李新','lixin');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '公司分管领导','GSZGLD','欧晓勇','ouxy');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '公司党政领导','ZJL','徐敏','xum');
+
+-- 户表管理
+
+insert into t_sys_role (id, name, cname) values('YX_JCXXGLZZ','YX_JCXXGLZZ','营销部稽查信息管理专责');
+insert into t_sys_role (id, name, cname) values('FC_TKZZ','FC_TKZZ','发策部图勘专责');
+insert into t_sys_role (id, name, cname) values('YJ_TKZZ','YJ_TKZZ','运检部图勘专责');
+insert into t_sys_role (id, name, cname) values('HBB_TKZZ','HBB_TKZZ','户表办图勘专责');
+
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '营销部稽查信息管理专责','YX_JCXXGLZZ','张瑜','zhangy');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '发策部图勘专责','FC_TKZZ','李梅梅','limm');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '发策部图勘专责','FC_TKZZ','锻炼','duanl');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '运检部图勘专责','YJ_TKZZ','周庆','zhouq');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '户表办图勘专责','HBB_TKZZ','徐敏','xum');
+
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '营销部稽查信息管理专责','YX_JCXXGLZZ','系统管理员','admin');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '发策部图勘专责','FC_TKZZ','系统管理员','admin');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '运检部图勘专责','YJ_TKZZ','系统管理员','admin');
+insert into t_sys_userrole(id, rname, roleid, uname, userid) values(sys_guid(), '户表办图勘专责','HBB_TKZZ','系统管理员','admin');
+

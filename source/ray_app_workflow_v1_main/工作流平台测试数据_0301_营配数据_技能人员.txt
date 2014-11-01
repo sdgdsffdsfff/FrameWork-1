@@ -1,0 +1,66 @@
+﻿insert into t_sys_wfbform (id, url, classid, cname) values('YPSJ','','YPSJ','营配数据');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('YPSJ', 'YPSJ', '营配数据', 'YPSJ');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('YPSJ_JNRY','营配数据流程','YPSJ','YPSJ','1','激活','YPSJ_JNRY');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_JNRY_000','开始','BEGIN','YPSJ_JNRY','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_JNRY_QC','起草','NORMAL','YPSJ_JNRY','YPSJ','普通','OR','OR','Y',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_JNRY_BZZ','班组长审核','NORMAL','YPSJ_JNRY','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_JNRY_BMJCSH','部门交叉审核','NORMAL','YPSJ_JNRY','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_JNRY_BMJCSHHZ','部门交叉审核汇总','NORMAL','YPSJ_JNRY','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_JNRY_ZZSH','部门专责审核','NORMAL','YPSJ_JNRY','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_JNRY_QXZXSH','抢修中心分管审核','NORMAL','YPSJ_JNRY','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_JNRY_999','结束','END','YPSJ_JNRY','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('YPSJ_JNRY_QC_001','YPSJ_JNRY_QC',null,'ROLE','JNRY','技能人员',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('YPSJ_JNRY_BZZ_001','YPSJ_JNRY_BZZ',null,'FORMULA','@DefDeptRoleByName(班组长#1)','@DefDeptRoleByName(班组长#1)',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('YPSJ_JNRY_BMJCSH_001','YPSJ_JNRY_BMJCSH',null,'ROLE','@DeptsRoleByName()','公司分管领导',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('YPSJ_JNRY_BMJCSHHZ_001','YPSJ_JNRY_BMJCSHHZ',null,'ROLE','ZJL','公司党政领导',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_JNRY_000_QC','转起草',null,null,'YPSJ_JNRY_000','YPSJ_JNRY_QC','YPSJ_JNRY',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_JNRY_QC_GXSH_BMZR','转主任审核',null,null,'YPSJ_JNRY_QC','YPSJ_JNRY_BZZ','YPSJ_JNRY',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_JNRY_BZZ_GXSH_GSZGLD','转公司分管领导审核',null,null,'YPSJ_JNRY_BZZ','YPSJ_JNRY_BMJCSH','YPSJ_JNRY',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_JNRY_BMJCSH_GXSH_ZJL','转公司党政领导审核',null,null,'YPSJ_JNRY_BMJCSH','YPSJ_JNRY_BMJCSHHZ','YPSJ_JNRY',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_JNRY_QC_999','发布',null,null,'YPSJ_JNRY_QC','YPSJ_JNRY_999','YPSJ_JNRY',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_JNRY_BZZ_999','发布',null,null,'YPSJ_JNRY_BZZ','YPSJ_JNRY_999','YPSJ_JNRY',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_JNRY_BMJCSH_999','发布',null,null,'YPSJ_JNRY_BMJCSH','YPSJ_JNRY_999','YPSJ_JNRY',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_JNRY_BMJCSHHZ_999','发布',null,null,'YPSJ_JNRY_BMJCSHHZ','YPSJ_JNRY_999','YPSJ_JNRY',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_JNRY_000','YPSJ_JNRY_000','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_JNRY_QC','YPSJ_JNRY_QC','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_JNRY_BZZ','YPSJ_JNRY_BZZ','500','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_JNRY_BMJCSH','YPSJ_JNRY_BMJCSH','625','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_JNRY_BMJCSHHZ','YPSJ_JNRY_BMJCSHHZ','750','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_JNRY_999','YPSJ_JNRY_999','875','375');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_JNRY_000_QC','YPSJ_JNRY_000_QC','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_JNRY_QC_999','YPSJ_JNRY_QC_999','400,275,400,400,900,400');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_JNRY_QC_GXSH_BMZR','YPSJ_JNRY_QC_GXSH_BMZR','400,275,525,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_JNRY_BZZ_GXSH_GSZGLD','YPSJ_JNRY_BZZ_GXSH_GSZGLD','525,275,650,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_JNRY_BMJCSH_GXSH_ZJL','YPSJ_JNRY_BMJCSH_GXSH_ZJL','650,275,775,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_JNRY_BMJCSHHZ_999','YPSJ_JNRY_BMJCSHHZ_999','775,275,775,400,900,400');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_JNRY_BZZ_999','YPSJ_JNRY_BZZ_999','525,275,525,400,900,400');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_JNRY_BMJCSH_999','YPSJ_JNRY_BMJCSH_999','650,275,650,400,900,400');
+
+

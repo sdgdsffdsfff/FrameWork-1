@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.portal.usernavitem" extends="default" namespace="/module/irm/system/portal/usernavitem">
+		<action name="usernavitem_*" class="com.ray.xj.sgcc.irm.system.portal.usernavitem.action.UserNavitem" method="{1}">
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">usernavitem_browse.action?_searchname=system.portal.usernavitem.browse</result>
+			<result name="delete" type="redirect">usernavitem_browse.action?_searchname=system.portal.usernavitem.browse</result>
+			<result name="update" type="redirect">usernavitem_locate.action?_searchname=system.portal.usernavitem.locate&amp;id=${usernavitem.id}</result>
+
+		</action>
+	</package>
+</struts>

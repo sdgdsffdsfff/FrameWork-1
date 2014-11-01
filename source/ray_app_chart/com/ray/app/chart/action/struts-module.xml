@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.chart.chart" extends="default" namespace="/module/app/system/chart/chart">
+		<action name="chart_*" class="com.ray.app.chart.action.ChartAction" method="{1}">
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">chart_locate.action?_searchname=chart.locate&amp;id=${chart.id}</result>
+			<result name="update" type="redirect">chart_locate.action?_searchname=chart.locate&amp;id=${chart.id}</result>
+			<result name="delete" type="redirect">chart_browse.action?_searchname=chart.browse</result>
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+		</action>		
+		
+	</package>
+
+</struts>

@@ -1,0 +1,66 @@
+package com.ray.app.workflow.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.headray.core.spring.jdo.DyDaoHelper;
+import com.headray.core.spring.jdo.JdbcDao;
+import com.headray.framework.common.generator.UUIDGenerator;
+import com.headray.framework.services.db.SQLParser;
+import com.headray.framework.services.db.dybeans.DynamicObject;
+import com.ray.app.workflow.spec.DBFieldConstants;
+import com.ray.app.workflow.spec.SplitTableConstants;
+
+
+@Component
+@Transactional
+public class RActTaskService
+{
+	@Autowired
+	JdbcDao jdbcDao;
+	
+	public void update_from_bact_task(String actdefid, String runactkey, String tableid) throws Exception
+	{
+		StringBuffer sql = new StringBuffer();
+		sql.append("select a.id, a.actid, a.descript, a.sno, a.require, a.ctype \n");
+		sql.append("  from t_sys_wfbacttask a \n");
+		sql.append(" where 1 = 1 \n");
+		sql.append("   and a.actid = " + SQLParser.charValueRT(actdefid));
+	
+		List tasks = DyDaoHelper.query(jdbcDao.getJdbcTemplate(), sql.toString());
+		
+		for(int i=0;i<tasks.size();i++)
+		{
+			DynamicObject task = (DynamicObject)tasks.get(i);
+			
+			String sno = task.getAttr("sno");
+			String complete = DBFieldConstants.RACTTASK_COMPLETE_NO;
+			String acttaskdefid = task.getAttr("id");
+			String exectime = null;
+			create(runactkey, sno, complete, acttaskdefid, exectime, tableid);
+		}
+	}
+	
+	public String create(String runactkey,String sno, String complete,String acttaskdefid,String exectime, String tableid) throws Exception
+	{
+		String runacttaskkey = UUIDGenerator.getInstance().getNextValue(); //String.valueOf(System.nanoTime()); ;
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("insert into " + SplitTableConstants.getSplitTable("t_sys_wfracttask", tableid) + "(id,sno,runactkey,complete,acttaskdefid,exectime) \n");
+		sql.append("values(");
+		sql.append(SQLParser.charValueEnd(runacttaskkey));
+		sql.append(SQLParser.charValueEnd(sno));
+		sql.append(SQLParser.charValueEnd(runactkey));
+		sql.append(SQLParser.charValueEnd(complete));
+		sql.append(SQLParser.charValueEnd(acttaskdefid));
+		sql.append(SQLParser.charValue(exectime));
+		sql.append(") \n");
+
+		DyDaoHelper.update(jdbcDao.getJdbcTemplate(), sql.toString());
+		
+		return runacttaskkey;
+	}
+}

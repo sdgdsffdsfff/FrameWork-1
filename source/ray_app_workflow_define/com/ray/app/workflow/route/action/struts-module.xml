@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.workflow.route.action" extends="default" namespace="/module/app/system/workflow/route">
+		<action name="route_*" class="com.ray.app.workflow.route.action.RouteAction" method="{1}">
+			<result name="insertline" type="freemarker">/com/ray/app/workflow/route/view/insertline.ftl</result>
+			<result name="linetype" type="freemarker">/com/ray/app/workflow/route/view/linetype.ftl</result>
+			<result name="selacttask" type="freemarker">/com/ray/app/workflow/route/view/selacttask.ftl</result>
+			<result name="linetasklist" type="freemarker">/com/ray/app/workflow/route/view/linetasklist.ftl</result>
+			<result name="nodetasklist" type="freemarker">/com/ray/app/workflow/route/view/nodetasklist.ftl</result>
+		</action>
+	</package>
+</struts>

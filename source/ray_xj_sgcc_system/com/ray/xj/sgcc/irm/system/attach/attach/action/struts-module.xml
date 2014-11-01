@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="/module/irm/system/attach/attach" extends="default" namespace="/module/irm/system/attach/attach">
+		<action name="attach_*" class="com.ray.xj.sgcc.irm.system.attach.attach.action.AttachAction" method="{1}">
+			<result name="browseall" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/xj/sgcc/irm/system/attach/attach/view/input.ftl</result>
+			<result name="insert" type="redirect">attach_browse.action?_searchname=system.attach.attach.browse</result>
+			<result name="delete" type="freemarker">/com/ray/xj/sgcc/irm/system/attach/attach/view/delete.ftl</result>
+			<result name="deleteattachs" type="redirect">attach_browseall.action?_searchname=system.attach.attach.browseall</result>
+			<result name="update" type="redirect">attach_locate.action?_searchname=system.attach.attach.locate&amp;id=${knowledgeDocument.id}</result>
+			<result name="success" type="stream">
+				<param name="filename">aaa.doc</param>
+				<param name="contentType">application/octet-stream;charset=UTF-8</param>
+				<param name="inputName">inputStream</param>
+				<!-- 使用经过转码的文件名作为下载文件名，downloadFileName属性 对应action类中的方法 getDownloadFileName() -->
+				<param name="contentDisposition">attachment;filename="${downFileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+	</package>
+</struts>

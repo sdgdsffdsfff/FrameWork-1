@@ -1,0 +1,51 @@
+﻿update t_sys_wfrflow
+   set (suprunflowkey, suprunactkey) =
+(   
+select runflowkey_sup, runactkey_sup from
+(select v_a.runflowkey, v_a.runactkey, v_b.runflowkey runflowkey_sup, v_b.runactkey runactkey_sup
+  from t_sys_wfrflow,
+       t_app_task,
+       t_app_tasktail,
+       (select ract.runactkey, ract.runflowkey, ract.dataid
+          from t_sys_wfract ract,
+               t_sys_wfbact bact,
+               (select dataid, min(ccreatetime) ccreatetime
+                  from t_sys_wfract ract, t_sys_wfbact bact
+                 where 1 = 1
+                   and ract.tableid = 'TaskTail'
+                   and ract.actdefid = bact.id
+                   and bact.cname = '跟踪'
+                 group by dataid) temp
+         where 1 = 1
+           and ract.tableid = 'TaskTail'
+           and ract.actdefid = bact.id
+           and bact.cname = '跟踪'
+           and ract.dataid = temp.dataid
+           and ract.ccreatetime = temp.ccreatetime) v_a,
+       (select ract.runactkey,
+               ract.runflowkey,
+               ract.dataid,
+               ract.ccreatetime
+          from t_sys_wfract ract,
+               t_sys_wfbact bact,
+               (select dataid, min(ccreatetime) ccreatetime
+                  from t_sys_wfract ract, t_sys_wfbact bact
+                 where 1 = 1
+                   and ract.tableid = 'Task'
+                   and ract.actdefid = bact.id
+                   and bact.cname = '跟踪'
+                 group by dataid) temp
+         where 1 = 1
+           and ract.tableid = 'Task'
+           and ract.actdefid = bact.id
+           and bact.cname = '跟踪'
+           and ract.dataid = temp.dataid
+           and ract.ccreatetime = temp.ccreatetime) v_b
+ where 1 = 1
+   and t_sys_wfrflow.runflowkey = v_a.runflowkey
+   and t_app_task.id = t_app_tasktail.taskid
+   and t_app_task.id = v_b.dataid
+   and t_app_tasktail.id = v_a.dataid) v_all
+ where 1 = 1
+   and t_sys_wfrflow.runflowkey = v_all.runflowkey  
+)   

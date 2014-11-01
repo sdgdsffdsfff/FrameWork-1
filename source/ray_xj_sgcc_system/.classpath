@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_app_dictionary"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/headray_app_query_v1"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/headray_core_data"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_app_chart"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_app_chart_view_fusionchart"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_app_query"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_app_query_view_irm"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_core_framework"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_core_function"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_core_ssh"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_app_workflow_v1"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/pams"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

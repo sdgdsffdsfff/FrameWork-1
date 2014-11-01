@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.irm.system.organ.role" extends="default" namespace="/module/irm/system/organ/role">
+		<action name="role_*" class="com.ray.xj.sgcc.irm.system.organ.role.action.RoleAction" method="{1}">
+			<result name="functionmainframe" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/functionmainframe.ftl</result>
+			<result name="locateframe" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/locateframe.ftl</result>
+			<result name="tree" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/tree.ftl</result>
+			<result name="treechild" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/treechild.ftl</result>
+			
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/input.ftl</result>
+			<!--<result name="insert" type="redirect">role_browse.action?_searchname=system.organ.role.browse</result>-->
+			<result name="insert" type="redirect">role_locateframe.action?id=${arg.id}</result>
+			<result name="delete" type="redirect">role_browse.action?_searchname=system.organ.role.browse</result>
+			<result name="update" type="redirect">role_locate.action?_searchname=system.organ.role.locate&amp;id=${role.id}</result>
+			
+			<result name="browseuser" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/userpage.ftl</result>
+			<result name="saveuser" type="redirect">role_browseuser.action?_searchname=system.organ.role.browseuser&amp;roleid=${arg.roleid}&amp;parentorganid=${arg.parentorganid}</result>
+			<result name="browsefunction" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/functionpage.ftl</result>
+			<result name="savefunction" type="redirect">role_browsefunction.action?_searchname=system.organ.role.browsefunction&amp;roleid=${arg.roleid}&amp;fnum=${arg.fnum}</result>
+			<result name="browseportalitem" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/portalitempage.ftl</result>
+			<result name="saveportalitem" type="redirect">role_browseportalitem.action?_searchname=system.organ.role.browseportalitem&amp;roleid=${arg.roleid}</result>
+			<result name="browsesubject" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/subjectpage.ftl</result>
+			<result name="savesubject" type="redirect">role_browsesubject.action?_searchname=system.organ.role.browsesubject&amp;roleid=${arg.roleid}</result>
+			<result name="browseshortcut" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/shortcutpage.ftl</result>
+			<result name="saveshortcut" type="redirect">role_browseshortcut.action?_searchname=system.organ.role.browseshortcut&amp;roleid=${arg.roleid}</result>
+			
+			<result name="mainframe" type="freemarker">/com/ray/xj/sgcc/irm/system/organ/role/view/mainframe.ftl</result>
+		</action>
+	</package>
+</struts>

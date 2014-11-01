@@ -1,0 +1,39 @@
+﻿insert into t_sys_wfbform (id, url, classid, cname) values('GXGL','','GXGL','共享管理');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('GXGL', 'GXGL', '共享管理', 'GXGL');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('GXGL_GSZGLD','公司领导信息共享流程','GXGL','GXGL','1','激活','GXGL_GSZGLD');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('GXGL_GSZGLD_000','开始','BEGIN','GXGL_GSZGLD','GXGL','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('GXGL_GSZGLD_QC','起草','NORMAL','GXGL_GSZGLD','GXGL','普通','OR','OR','Y',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('GXGL_GSZGLD_GXSH_ZJL','公司党政领导审核','NORMAL','GXGL_GSZGLD','GXGL','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('GXGL_GSZGLD_999','结束','END','GXGL_GSZGLD','GXGL','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('GXGL_GSZGLD_QC_001','GXGL_GSZGLD_QC',null,'ROLE','GSZGLD','公司分管领导',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('GXGL_GSZGLD_GXSH_ZJL_001','GXGL_GSZGLD_GXSH_ZJL',null,'ROLE','ZJL','公司党政领导',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('GXGL_GSZGLD_000_QC','转起草',null,null,'GXGL_GSZGLD_000','GXGL_GSZGLD_QC','GXGL_GSZGLD',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('GXGL_GSZGLD_QC_GXSH_ZJL','转公司党政领导审核',null,null,'GXGL_GSZGLD_QC','GXGL_GSZGLD_GXSH_ZJL','GXGL_GSZGLD',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('GXGL_GSZGLD_QC_999','发布',null,null,'GXGL_GSZGLD_QC','GXGL_GSZGLD_999','GXGL_GSZGLD',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('GXGL_GSZGLD_GXSH_ZJL_999','发布',null,null,'GXGL_GSZGLD_GXSH_ZJL','GXGL_GSZGLD_999','GXGL_GSZGLD',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('GXGL_GSZGLD_000','GXGL_GSZGLD_000','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('GXGL_GSZGLD_QC','GXGL_GSZGLD_QC','500','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('GXGL_GSZGLD_GXSH_ZJL','GXGL_GSZGLD_GXSH_ZJL','750','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('GXGL_GSZGLD_999','GXGL_GSZGLD_999','875','375');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('GXGL_GSZGLD_000_QC','GXGL_GSZGLD_000_QC','400,275,525,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('GXGL_GSZGLD_QC_GXSH_ZJL','GXGL_GSZGLD_QC_GXSH_ZJL','650,275,775,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('GXGL_GSZGLD_QC_999','GXGL_GSZGLD_QC_999','650,275,775,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('GXGL_GSZGLD_GXSH_ZJL_999','GXGL_GSZGLD_GXSH_ZJL_999','775,400,900,400');
+
+

@@ -1,0 +1,62 @@
+﻿insert into t_sys_wfbform (id, url, classid, cname) values('YPSJ','','YPSJ','营配数据');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('YPSJ', 'YPSJ', '营配数据', 'YPSJ');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('YPSJ_ZZ','专责信息共享流程','YPSJ','YPSJ','1','激活','YPSJ_ZZ');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_ZZ_000','开始','BEGIN','YPSJ_ZZ','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_ZZ_QC','起草','NORMAL','YPSJ_ZZ','YPSJ','普通','OR','OR','Y',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_ZZ_GXSH_BMZR','主任审核','NORMAL','YPSJ_ZZ','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_ZZ_GXSH_GSZGLD','公司分管领导审核','NORMAL','YPSJ_ZZ','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_ZZ_GXSH_ZJL','公司党政领导审核','NORMAL','YPSJ_ZZ','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('YPSJ_ZZ_999','结束','END','YPSJ_ZZ','YPSJ','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('YPSJ_ZZ_QC_001','YPSJ_ZZ_QC',null,'ROLE','XXGXZZ','专责',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('YPSJ_ZZ_GXSH_BMZR_001','YPSJ_ZZ_GXSH_BMZR',null,'FORMULA','@DefDeptRoleByName(主任#10)','@DefDeptRoleByName(主任#10)',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('YPSJ_ZZ_GXSH_GSZGLD_001','YPSJ_ZZ_GXSH_GSZGLD',null,'ROLE','GSZGLD','公司分管领导',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('YPSJ_ZZ_GXSH_ZJL_001','YPSJ_ZZ_GXSH_ZJL',null,'ROLE','ZJL','公司党政领导',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_ZZ_000_QC','转起草',null,null,'YPSJ_ZZ_000','YPSJ_ZZ_QC','YPSJ_ZZ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_ZZ_QC_GXSH_BMZR','转主任审核',null,null,'YPSJ_ZZ_QC','YPSJ_ZZ_GXSH_BMZR','YPSJ_ZZ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_ZZ_GXSH_BMZR_GXSH_GSZGLD','转公司分管领导审核',null,null,'YPSJ_ZZ_GXSH_BMZR','YPSJ_ZZ_GXSH_GSZGLD','YPSJ_ZZ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_ZZ_GXSH_GSZGLD_GXSH_ZJL','转公司党政领导审核',null,null,'YPSJ_ZZ_GXSH_GSZGLD','YPSJ_ZZ_GXSH_ZJL','YPSJ_ZZ',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_ZZ_QC_999','发布',null,null,'YPSJ_ZZ_QC','YPSJ_ZZ_999','YPSJ_ZZ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_ZZ_GXSH_BMZR_999','发布',null,null,'YPSJ_ZZ_GXSH_BMZR','YPSJ_ZZ_999','YPSJ_ZZ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_ZZ_GXSH_GSZGLD_999','发布',null,null,'YPSJ_ZZ_GXSH_GSZGLD','YPSJ_ZZ_999','YPSJ_ZZ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('YPSJ_ZZ_GXSH_ZJL_999','发布',null,null,'YPSJ_ZZ_GXSH_ZJL','YPSJ_ZZ_999','YPSJ_ZZ',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_ZZ_000','YPSJ_ZZ_000','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_ZZ_QC','YPSJ_ZZ_QC','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_ZZ_GXSH_BMZR','YPSJ_ZZ_GXSH_BMZR','500','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_ZZ_GXSH_GSZGLD','YPSJ_ZZ_GXSH_GSZGLD','625','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_ZZ_GXSH_ZJL','YPSJ_ZZ_GXSH_ZJL','750','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('YPSJ_ZZ_999','YPSJ_ZZ_999','875','375');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_ZZ_000_QC','YPSJ_ZZ_000_QC','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_ZZ_QC_999','YPSJ_ZZ_QC_999','400,275,400,400,900,400');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_ZZ_QC_GXSH_BMZR','YPSJ_ZZ_QC_GXSH_BMZR','400,275,525,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_ZZ_GXSH_BMZR_GXSH_GSZGLD','YPSJ_ZZ_GXSH_BMZR_GXSH_GSZGLD','525,275,650,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_ZZ_GXSH_GSZGLD_GXSH_ZJL','YPSJ_ZZ_GXSH_GSZGLD_GXSH_ZJL','650,275,775,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_ZZ_GXSH_ZJL_999','YPSJ_ZZ_GXSH_ZJL_999','775,275,775,400,900,400');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_ZZ_GXSH_BMZR_999','YPSJ_ZZ_GXSH_BMZR_999','525,275,525,400,900,400');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('YPSJ_ZZ_GXSH_GSZGLD_999','YPSJ_ZZ_GXSH_GSZGLD_999','650,275,650,400,900,400');
+
+

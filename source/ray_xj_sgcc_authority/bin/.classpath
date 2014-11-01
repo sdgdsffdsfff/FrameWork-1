@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_app_dictionary"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/pams"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_xj_sgcc_system"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_core_framework"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_core_function"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ray_core_ssh"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

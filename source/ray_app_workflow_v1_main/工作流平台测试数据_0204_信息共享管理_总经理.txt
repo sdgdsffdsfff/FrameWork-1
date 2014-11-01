@@ -1,0 +1,27 @@
+﻿insert into t_sys_wfbform (id, url, classid, cname) values('GXGL','','GXGL','共享管理');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('GXGL', 'GXGL', '共享管理', 'GXGL');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('GXGL_ZJL','共享管理_公司党政领导','GXGL','GXGL','1','激活','GXGL_ZJL');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('GXGL_ZJL_000','开始','BEGIN','GXGL_ZJL','GXGL','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('GXGL_ZJL_QC','起草','NORMAL','GXGL_ZJL','GXGL','普通','OR','OR','Y',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('GXGL_ZJL_999','结束','END','GXGL_ZJL','GXGL','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('GXGL_ZJL_QC_001','GXGL_ZJL_QC',null,'ROLE','ZJL','系统用户',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('GXGL_ZJL_000_QC','转起草',null,null,'GXGL_ZJL_000','GXGL_ZJL_QC','GXGL_ZJL',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('GXGL_ZJL_QC_999','发布',null,null,'GXGL_ZJL_QC','GXGL_ZJL_999','GXGL_ZJL',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('GXGL_ZJL_000','GXGL_ZJL_000','500','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('GXGL_ZJL_QC','GXGL_ZJL_QC','625','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('GXGL_ZJL_999','GXGL_ZJL_999','875','375');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('GXGL_ZJL_000_QC','GXGL_ZJL_000_QC','525,275,650,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('GXGL_ZJL_QC_999','GXGL_ZJL_QC_999','775,400,900,400');
+

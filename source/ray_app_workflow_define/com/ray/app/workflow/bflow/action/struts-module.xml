@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.ray.app.workflow.flow.action" extends="default" namespace="/module/app/system/workflow/bflow">
+		<action name="bflow_*" class="com.ray.app.workflow.bflow.action.BFlowAction" method="{1}">
+			<result name="insertflow" type="freemarker">/com/ray/app/workflow/bflow/view/insertflow.ftl</result>
+			<result name="updateflow" type="redirect">${base}/module/app/system/workflow/define/define_main.action?flowid=${arg.flowid}</result>
+			<result name="form" type="freemarker">/com/ray/app/workflow/bflow/view/form.ftl</result>
+			<result name="owner" type="freemarker">/com/ray/app/workflow/bflow/view/owner.ftl</result>
+
+			<result name="browsebflowclass" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="inputbflowclass" type="freemarker">/com/ray/app/workflow/bflow/view/inputbflowclass.ftl</result>
+			<result name="insertbflowclass" type="redirect">bflow_locatebflowclass.action?id=${data.id}</result>
+			<result name="updatebflowclass" type="redirect">bflow_locatebflowclass.action?id=${data.id}</result>
+			<result name="locatebflowclass" type="freemarker">/com/ray/app/workflow/bflow/view/locatebflowclass.ftl</result>
+			<result name="deletebflowclass" type="redirect">bflow_browsebflowclass.action?_searchname=workflow.bflow.browsebflowclass</result>
+			<result name="browsebpriority" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locatebpriority" type="freemarker">/com/ray/app/workflow/bflow/view/locatebpriority.ftl</result>
+			<result name="updatebpriority" type="redirect">bflow_locatebpriority.action?id=${data.bpriority.id}</result>
+			<result name="inputbpriority" type="freemarker">/com/ray/app/workflow/bflow/view/inputbpriority.ftl</result>
+			<result name="insertbpriority" type="redirect">bflow_locatebpriority.action?id=${arg.id}</result>
+			<result name="deletebpriority" type="redirect">bflow_browsebpriority.action?_searchname=workflow.bflow.browsebpriority</result>
+
+			<result name="insertbflow" type="redirect">${base}/module/app/system/workflow/define/define_main.action?flowid=${arg.flowid}</result>
+			<result name="updatebflow" type="redirect">${base}/module/app/system/workflow/define/define_main.action?flowid=${arg.flowid}</result>
+			<result name="deletebflow" type="redirect">${base}/module/app/system/workflow/define/define_main.action</result>
+			<result name="usebflow" type="redirect">${base}/module/app/system/workflow/define/define_main.action?flowid=${arg.flowid}</result>
+			<result name="invokebflow" type="redirect">${base}/module/app/system/workflow/define/define_main.action?flowid=${arg.flowid}</result>
+			<result name="flag" type="freemarker">/com/ray/app/workflow/bflow/view/flag.ftl</result>
+		
+			<result name="selectbform" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+		</action>
+	</package>
+</struts>

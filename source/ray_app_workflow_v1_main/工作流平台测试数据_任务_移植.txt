@@ -1,0 +1,109 @@
+﻿-- 删除任务流程定义
+delete from t_sys_wfbactpos where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'Task'));
+delete from t_sys_wfbroutepos where routeid in (select id from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'Task'));
+
+delete from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'Task');
+delete from t_sys_wfbactowner where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'Task'));
+delete from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'Task');
+delete from t_sys_wfbflow where classid = 'Task';
+
+delete from t_sys_wfbform where id='Task';
+delete from t_sys_wfbflowclass where id='Task';
+
+-- 删除任务跟踪流程定义
+delete from t_sys_wfbactpos where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'TaskTail'));
+delete from t_sys_wfbroutepos where routeid in (select id from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'TaskTail'));
+
+delete from t_sys_wfbroute where flowid in (select id from t_sys_wfbflow where classid = 'TaskTail');
+delete from t_sys_wfbactowner where actid in (select id from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'TaskTail'));
+delete from t_sys_wfbact where flowid in (select id from t_sys_wfbflow where classid = 'TaskTail');
+delete from t_sys_wfbflow where classid = 'TaskTail';
+
+delete from t_sys_wfbform where id='TaskTail';
+delete from t_sys_wfbflowclass where id='TaskTail';
+
+-- 任务流程
+
+insert into t_sys_wfbform (id, url, classid, cname) values('Task','Task','Task','Task');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('Task', 'Task', 'Task', 'Task');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('TaskVinit','任务管理移植流程','Task','Task','1','生效','Task');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vt000','开始','BEGIN','TaskVinit','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vt001','新建','NORMAL','TaskVinit','1','普通','OR','OR','Y',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess, subflowid, subflowname, subflowsno, subflowcreate, subflowclose, subflowlink) 
+values('vt002','跟踪','SUBFLOW','TaskVinit','1','普通','OR','OR','N',null,'单人','N',null,'TaskVinitTail','任务成果流程','TaskVinitTail','MANUAL','ALL','MAIN');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vt999','结题','END','TaskVinit','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('vt001-001','vt001',null,'ROLE','XTYH','系统用户',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('vt002-001','vt002',null,'FORMULA','@FieldToPerson(Task#CURRENT#issueuserid#loginname)','任务下达人',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vt000-vt001','转下达',null,null,'vt000','vt001','TaskVinit',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vt001-vt002','转跟踪',null,null,'vt001','vt002','TaskVinit',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vt002-vt999','转结束',null,null,'vt002','vt999','TaskVinit',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('vt0000','vt000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('vt0001','vt001','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('vt0002','vt002','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('vt0003','vt999','500','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('vt0000','vt000-vt001','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('vt0001','vt001-vt002','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('vt0002','vt002-vt999','400,275,525,275');
+
+-- 任务跟踪流程
+insert into t_sys_wfbform (id, url, classid, cname) values('TaskTail','TaskTail','TaskTail','TaskTail');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('TaskTail', 'TaskTail', 'TaskTail', 'TaskTail');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('TaskTailVinit','任务跟踪移植流程','TaskTail','TaskTail','1','生效','TaskTail');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vtt000','开始','BEGIN','TaskTailVinit','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vtt001','跟踪','NORMAL','TaskTailVinit','1','普通','OR','OR','Y',null,'单人','N',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vtt002','审核','NORMAL','TaskTailVinit','1','普通','OR','OR','N',null,'单人','Y',null);
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('vtt999','结束','END','TaskTailVinit','1','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('vtt001-001','vtt001',null,'ROLE','XTYH','系统用户',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('vtt002-001','vtt002',null,'FORMULA','@FieldToPerson(Task#MAIN#audituserid#loginname)','任务审核人',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vtt000-vtt001','转跟踪',null,null,'vtt000','vtt001','TaskTailVinit',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vtt001-vtt002','转审核',null,null,'vtt001','vtt002','TaskTailVinit',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('vtt002-vtt999','转结束',null,null,'vtt002','vtt999','TaskTailVinit',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('vtt0000','vtt000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('vtt0001','vtt001','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('vtt0002','vtt002','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('vtt0003','vtt999','500','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('vtt0000','vtt000-vtt001','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('vtt0001','vtt001-vtt002','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('vtt0002','vtt002-vtt999','400,275,525,275');
+

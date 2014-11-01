@@ -1,0 +1,115 @@
+﻿insert into t_sys_wfbform (id, url, classid, cname) values('HBGL_YHSQ','','HBGL_YHSQ','户表管理_用户申请');
+insert into t_sys_wfbflowclass (id, appid, cname, cclass) values('HBGL_YHSQ', 'HBGL_YHSQ', '户表管理_用户申请', 'HBGL_YHSQ');
+
+insert into t_sys_wfbflow(id, cname, formid, classid, verson, state, sno) values('HBGL_YHSQ','户表管理_用户申请','HBGL_YHSQ','HBGL_YHSQ','1','生效','HBGL_YHSQ');
+
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_000','开始','BEGIN','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_YCTKZBD','一次图勘转办单','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','AND','OR','Y',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_TKYJFC','图勘意见(发策)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','Y',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_TKYJYJ','图勘意见(运检)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_TKYJHBB','图勘意见(户表办)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','Y',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_YCTKYJHZ','一次图勘意见汇总','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','AND','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTKZBFC','现场踏勘准备(发策)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTKZBYJ','现场踏勘准备(运检)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_ZDXMJL','指定项目经理','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTKZBHBB','现场踏勘准备(户表办)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTK','现场踏勘','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTKYJ','现场踏勘意见','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTKYJFKFC','现场踏勘意见反馈(发策)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTKYJFKYJ','现场踏勘意见反馈(运检)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTKYJFKHBB','现场踏勘意见反馈(户表办)','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_XCTKYJHZ','现场踏勘意见汇总','NORMAL','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+insert into t_sys_wfbact(id, cname, ctype, flowid, formid, handletype, split, join, isfirst, outstyle, selectstyle, selectother, formaccess) 
+values('HBGL_YHSQ_999','结束','END','HBGL_YHSQ','HBGL_YHSQ','普通','OR','OR','N',null,'单人','N',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_YCTKZBD_001','HBGL_YHSQ_YCTKZBD',null,'ROLE','YX_JCXXGLZZ','营销部稽查信息管理专责',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_TKYJFC_001','HBGL_YHSQ_TKYJFC',null,'ROLE','FC_TKZZ','发策部图勘专责',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_TKYJYJ_001','HBGL_YHSQ_TKYJYJ',null,'ROLE','YJ_TKZZ','运检部图勘专责',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_TKYJHBB_001','HBGL_YHSQ_TKYJHBB',null,'ROLE','HBB_TKZZ','户表办图勘专责',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_YCTKYJHZ_001','HBGL_YHSQ_YCTKYJHZ',null,'ROLE','YX_JCXXGLZZ','营销部稽查信息管理专责',null);
+
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_XCTKZBFC_001','HBGL_YHSQ_XCTKZBFC',null,'ROLE','FC_TKZZ','发策部图勘专责',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_XCTKZBYJ_001','HBGL_YHSQ_XCTKZBYJ',null,'ROLE','YJ_TKZZ','运检部部图勘专责',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_ZDXMJL_001','HBGL_YHSQ_ZDXMJL',null,'ROLE','HBB_TKZZ','户表办图勘专责',null);
+insert into t_sys_wfbactowner(id, actid, ownerchoice, ctype, ownerctx, cname, outstyle)
+values('HBGL_YHSQ_XCTKZBHBB_001','HBGL_YHSQ_XCTKZBHBB',null,'ROLE','HBB_TKZZ','户表办图勘专责',null);
+
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_000_YCTKZBD','转一次图勘转办单',null,null,'HBGL_YHSQ_000','HBGL_YHSQ_YCTKZBD','HBGL_YHSQ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_YCTKZBD_TKYJFC','转图勘意见(发策)',null,null,'HBGL_YHSQ_YCTKZBD','HBGL_YHSQ_TKYJFC','HBGL_YHSQ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_YCTKZBD_TKYJYJ','转图勘意见(运检)',null,null,'HBGL_YHSQ_YCTKZBD','HBGL_YHSQ_TKYJYJ','HBGL_YHSQ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_YCTKZBD_TKYJHBB','转图勘意见(户表办)',null,null,'HBGL_YHSQ_YCTKZBD','HBGL_YHSQ_TKYJHBB','HBGL_YHSQ',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_TKYJFC_YCTKYJHZ','转一次图勘意见汇总',null,null,'HBGL_YHSQ_TKYJFC','HBGL_YHSQ_YCTKYJHZ','HBGL_YHSQ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_TKYJYJ_YCTKYJHZ','转一次图勘意见汇总',null,null,'HBGL_YHSQ_TKYJYJ','HBGL_YHSQ_YCTKYJHZ','HBGL_YHSQ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_TKYJHBB_YCTKYJHZ','转一次图勘意见汇总',null,null,'HBGL_YHSQ_TKYJHBB','HBGL_YHSQ_YCTKYJHZ','HBGL_YHSQ',null);
+
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_YCTKYJHZ_XCTKZBFC','转现场踏勘准备(发策)',null,null,'HBGL_YHSQ_YCTKYJHZ','HBGL_YHSQ_XCTKZBFC','HBGL_YHSQ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_YCTKYJHZ_XCTKZBYJ','转现场踏勘准备(运检)',null,null,'HBGL_YHSQ_YCTKYJHZ','HBGL_YHSQ_XCTKZBYJ','HBGL_YHSQ',null);
+insert into t_sys_wfbroute(id, cname, routetype, conditions, startactid, endactid, flowid, direct) 
+values('HBGL_YHSQ_YCTKYJHZ_XCTKZBHBB','转现场踏勘准备(户表办)',null,null,'HBGL_YHSQ_YCTKYJHZ','HBGL_YHSQ_XCTKZBHBB','HBGL_YHSQ',null);
+
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_000','HBGL_YHSQ_000','125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_YCTKZBD','HBGL_YHSQ_YCTKZBD','250','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_TKYJFC','HBGL_YHSQ_TKYJFC','375','125');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_TKYJYJ','HBGL_YHSQ_TKYJYJ','375','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_TKYJHBB','HBGL_YHSQ_TKYJHBB','375','375');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_YCTKYJHZ','HBGL_YHSQ_YCTKYJHZ','500','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTKZBFC','HBGL_YHSQ_XCTKZBFC','625','125');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTKZBYJ','HBGL_YHSQ_XCTKZBYJ','625','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_ZDXMJL','HBGL_YHSQ_ZDXMJL','625','375');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTKZBHBB','HBGL_YHSQ_XCTKZBHBB','750','375');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTK','HBGL_YHSQ_XCTK','750','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTKYJ','HBGL_YHSQ_XCTKYJ','875','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTKYJFKFC','HBGL_YHSQ_XCTKYJFKFC','1000','125');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTKYJFKYJ','HBGL_YHSQ_XCTKYJFKYJ','1000','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTKYJFKHBB','HBGL_YHSQ_XCTKYJFKHBB','1000','375');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_XCTKYJHZ','HBGL_YHSQ_XCTKYJHZ','1125','250');
+insert into t_sys_wfbactpos(id,actid,px,py) values('HBGL_YHSQ_999','HBGL_YHSQ_999','1250','250');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_YHSQ_000_YCTKZBD','HBGL_YHSQ_000_YCTKZBD','150,275,275,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_YHSQ_YCTKZBD_TKYJFC','HBGL_YHSQ_YCTKZBD_TKYJFC','275,275,400,150');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_YHSQ_YCTKZBD_TKYJYJ','HBGL_YHSQ_YCTKZBD_TKYJYJ','275,275,400,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_YHSQ_YCTKZBD_TKYJHBB','HBGL_YHSQ_YCTKZBD_TKYJHBB','275,275,400,400');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_YHSQ_TKYJFC_YCTKYJHZ','HBGL_YHSQ_TKYJFC_YCTKYJHZ','400,150,525,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_YHSQ_TKYJYJ_YCTKYJHZ','HBGL_YHSQ_TKYJYJ_YCTKYJHZ','400,275,525,275');
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_YHSQ_TKYJHBB_YCTKYJHZ','HBGL_YHSQ_TKYJHBB_YCTKYJHZ','400,400,525,275');
+
+insert into t_sys_wfbroutepos(id,routeid,mpoints) values('HBGL_YHSQ_YCTKYJHZ_XCTKZBFC','HBGL_YHSQ_YCTKYJHZ_XCTKZBFC','525,275,650,275');
+
+

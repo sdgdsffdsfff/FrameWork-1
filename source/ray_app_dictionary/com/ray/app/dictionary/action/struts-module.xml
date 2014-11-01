@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="module.app.system.dictionary.dictionary" extends="default" namespace="/module/app/system/dictionary/dictionary">
+		<action name="dictionary_*" class="com.ray.app.dictionary.action.DictionaryAction" method="{1}">
+			<result name="mainframe" type="freemarker">/com/ray/app/dictionary/view/mainframe.ftl</result>
+			<result name="treechild" type="freemarker">/com/ray/app/dictionary/view/treechild.ftl</result>
+			<result name="tree" type="freemarker">/com/ray/app/dictionary/view/tree.ftl</result>
+			<result name="browse" type="freemarker">/com/ray/app/query/view/page.ftl</result>
+			<result name="locate" type="freemarker">/com/ray/app/query/view/locate.ftl</result>
+			<result name="input" type="freemarker">/com/ray/app/query/view/input.ftl</result>
+			<result name="insert" type="redirect">dictionary_locate.action?_searchname=system.dictionary.dictionary.locate&amp;id=${dictionary.id}&amp;dclassid=${arg.dclassid}</result>
+			<result name="delete" type="redirect">dictionary_browse.action?_searchname=system.dictionary.dictionary.browse&amp;dclassid=${arg.dclassid}</result>
+			<result name="update" type="redirect">dictionary_locate.action?_searchname=system.dictionary.dictionary.locate&amp;id=${dictionary.id}&amp;dclassid=${arg.dclassid}</result>
+		</action>
+	</package>
+</struts>
