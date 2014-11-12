@@ -27,7 +27,7 @@ public class CopySearch
 	public static void main(String[] args) throws Exception
 	{
 		CopySearch client = new CopySearch();
-		client.copy("12010107","22010107");
+		client.copy("30010101","30011151");
 	}
 	
 	public void copy(String sourceid, String destionid) throws Exception
